@@ -1,0 +1,23 @@
+// Do a simple ui for a payment system 
+// 1. Create a form with 3 inputs: name, email, amount
+// 2. Create a button to submit the form
+// 3. When the button is clicked, validate the inputs
+// 4. If the inputs are valid, create a payment object with the values from the form
+// 5. If the inputs are invalid, show an error message
+
+<html>
+<head>
+    <title>Payment System</title>
+</head>
+<body>
+    <form action="payment.php" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Enter your name">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email">
+        <label for="amount">Amount</label>
+        <input type="number" name="amount" id="amount" placeholder="Enter the amount">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
