@@ -24,36 +24,34 @@
     <div class="panelDePago bg-blue-500 rounded-3xl w-2/3 bg-opacity-80 mx-auto border-white border-2 grid grid-cols-2 pt-20 -z-10 ">
       
       <!--lado izquierdo-->
-      <div>
-        <form id="paymentForm" class="InfoInput p-8 inline-block text-center">
+      <div class="p-8 inline-block text-center">
 
-          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
-            <input type="text" id="name" placeholder="Nombre completo" class="placeholder:text-blue-400" required>
-          </div>
+        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+          <input type="text" id="name" placeholder="Nombre completo" class="placeholder:text-blue-400" required>
+        </div>
 
-          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
-            <input type="email" id="email" placeholder="E-mail" class="placeholder:text-blue-400" required>
-          </div>
+        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+          <input type="email" id="email" placeholder="E-mail" class="placeholder:text-blue-400" required>
+        </div>
 
-          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
-            <input type="number" id="ID" placeholder="identificacion" class="placeholder:text-blue-400" required>
-          </div>
+        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+          <input type="number" id="ID" placeholder="identificacion" class="placeholder:text-blue-400" required>
+        </div>
 
-          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
-            <input type="text" id="reason" placeholder="Concepto De Pago" class="placeholder:text-blue-400" required>
-          </div>
+        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+          <input type="text" id="reason" placeholder="Concepto De Pago" class="placeholder:text-blue-400" required>
+        </div>
 
-          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
-            <input type="text" id="sede"  placeholder="sede" class="placeholder:text-blue-400" required>
-          </div>
+        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+          <input type="text" id="sede"  placeholder="sede" class="placeholder:text-blue-400" required>
+        </div>
 
-          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
-            <input type="number" id="amount" min="0" step="1" placeholder="Monto a pagar" class="placeholder:text-blue-400" required>
-          </div>
+        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+          <input type="number" id="amount" min="0" step="1" placeholder="Monto a pagar" class="placeholder:text-blue-400" required>
+        </div>
 
-          <button type="submit" id="btnConsultar" onclick="validateInputs()" class="bg-white rounded-3xl ml-40 mt-8 mr-0 block py-2 px-8">Consultar</button>
-        </form>
-        
+        <button type="button" id="btnConsultar" onclick="validateInputs()" class="bg-white rounded-3xl ml-40 mt-8 mr-0 block py-2 px-8">Consultar</button>
+
       </div>
 
 
@@ -76,7 +74,6 @@
         <!--form de credito-->
         <div id="formaDePagoCred" class="bg-blue-300 my-4 rounded-3xl bg-opacity-80 text-center hidden p-4">
           <img src="/assets/TARJETAS-430x119.png" alt="tarjetas" class="inline-block w-1/2 ">
-          <form action="">
 
             <div class="bg-white rounded-3xl inline-block py-2 px-8">
               <input type="number" id="amount" min="0" step="" placeholder="nro tarjeta" class="placeholder:text-blue-400" required>
@@ -86,8 +83,7 @@
               <input type="number" id="amount" min="0" max="36" step="1" placeholder="cuotas" class="placeholder:text-blue-400 w-12 " required>
             </div>
 
-            <button type="submit" id="btnPagar" onclick="" class="bg-white rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>
-          </form>
+            <button type="button" id="btnPagar" onclick="validateInputs()" class="bg-white rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>
           
         </div>
         
