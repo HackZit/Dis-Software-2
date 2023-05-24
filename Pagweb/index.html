@@ -1,87 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .error {
       color: red;
     }
   </style>
 </head>
+
 <body>
-  <h1>Payment System</h1>
-  <form id="paymentForm">
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" required>
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
-    </div>
-    <div>
-      <label for="amount">Amount:</label>
-      <input type="number" id="amount" min="0" step="0.01" required>
-    </div>
-    <button type="submit">Submit</button>
-  </form>
-  <div id="errorMessage" class="error"></div>
+  
+  <div class="relative">
+    <img src="/assets/montana.jpg" alt="montana" class="absolute -z-20">
+    
+    <!--todo el panel-->
+    <h1 class=" font-bold text-4xl pt-16 text-center z-20">Sistema de pago en linea</h1>
+    <div class="panelDePago bg-blue-500 absolute rounded-3xl w-2/3 bg-opacity-80 mx-64 top-12 border-white border-2 grid grid-cols-2 pt-20 -z-10">
+      
+      <!--lado izquierdo-->
+      <div>
+        <form id="paymentForm" class="InfoInput p-8 inline-block text-center">
 
-  <script>
-    document.getElementById("paymentForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      validateInputs();
-    });
+          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+            <input type="text" id="name" placeholder="Nombre completo" class="placeholder:text-blue-400" required>
+          </div>
 
-    function validateInputs() {
-      var name = document.getElementById("name").value;
-      var email = document.getElementById("email").value;
-      var amount = document.getElementById("amount").value;
+          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+            <input type="email" id="email" placeholder="E-mail" class="placeholder:text-blue-400" required>
+          </div>
 
-      var errorMessage = "";
+          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+            <input type="number" id="CC" placeholder="identificacion" class="placeholder:text-blue-400" required>
+          </div>
 
-      if (name.trim() === "") {
-        errorMessage += "Name is required.<br>";
-      }
+          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+            <input type="text" id="razon" placeholder="Concepto De Pago" class="placeholder:text-blue-400" required>
+          </div>
 
-      if (email.trim() === "") {
-        errorMessage += "Email is required.<br>";
-      } else if (!isValidEmail(email)) {
-        errorMessage += "Email is invalid.<br>";
-      }
+          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+            <input type="text" id="sede"  placeholder="sede" class="placeholder:text-blue-400" required>
+          </div>
 
-      if (amount.trim() === "") {
-        errorMessage += "Amount is required.<br>";
-      } else if (isNaN(parseFloat(amount))) {
-        errorMessage += "Amount must be a valid number.<br>";
-      }
+          <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+            <input type="number" id="amount" min="0" step="1" placeholder="Monto a pagar" class="placeholder:text-blue-400" required>
+          </div>
 
-      var errorElement = document.getElementById("errorMessage");
-      if (errorMessage !== "") {
-        errorElement.innerHTML = errorMessage;
-      } else {
-        errorElement.innerHTML = "";
-        createPaymentObject(name, email, parseFloat(amount));
-      }
-    }
+          <button type="submit" class="bg-white rounded-3xl ml-2 mt-8 mr-0 block py-2 px-8">Submit</button>
+        </form>
+        <div id="errorMessage" class="error"></div>
+      </div>
 
-    function isValidEmail(email) {
-      // Basic email validation regex
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    }
 
-    function createPaymentObject(name, email, amount) {
-      // Create a payment object using the values from the form
-      var payment = {
-        name: name,
-        email: email,
-        amount: amount
-      };
+      <!--lado derecho-->
+      <div class="p-8">
+        <select name="" id="tipoPago" class=" block mx-auto bg-white rounded-3xl text-center py-2 px-12 text-blue-400">
+          <option value="1">Credito</option>
+          <option value="2">PSE</option>
+        </select>
+        
+        <!--solo imagenes-->
+        <div id="formaDePagoEJ" class="block bg-blue-300 mt-4 rounded-3xl bg-opacity-80 text-center py-2">
+          <img src="/assets/TARJETAS-430x119.png" alt="tarjetas" class="inline-block w-1/2">
+          <img src="/assets/logopsenuevo.png" alt="tarjetas" class="inline-block w-1/3">
+        </div>
 
-      // Perform further actions with the payment object
-      console.log(payment);
-    }
-  </script>
+        <!--form de credito-->
+        <div id="formaDePagoCred" class="bg-blue-300 mt-4 rounded-3xl bg-opacity-80 text-center hidden">
+          <img src="/assets/TARJETAS-430x119.png" alt="tarjetas" class="inline-block w-1/3 ">
+          <form action="">
+
+            <div class="bg-white rounded-3xl inline-block py-2 px-8">
+              <input type="number" id="amount" min="0" step="" placeholder="nro tarjeta" class="placeholder:text-blue-400" required>
+            </div>
+
+            <div class="bg-white rounded-3xl m-2 inline-block py-2 pl-2 pr-4 w-1/6">
+              <input type="number" id="amount" min="0" max="36" step="1" placeholder="cuotas" class="placeholder:text-blue-400 w-12 " required>
+            </div>
+
+            <button type="submit" class="bg-white rounded-3xl block py-2 px-8 mx-auto">Submit</button>
+          </form>
+          
+        </div>
+        
+      </div>
+  </div>
+</div>
+<style>
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    display: none;
+  }
+</style>
 </body>
 </html>
+<script src="scripts.js"></script>
+
