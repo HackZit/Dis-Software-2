@@ -16,11 +16,11 @@
 <body>
   
   <div class="relative">
-    <img src="/assets/montana.jpg" alt="montana" class="absolute -z-20">
+    <img src="/assets/montana.jpg" alt="montana" class="absolute -z-20 w-screen h-screen">
     
     <!--todo el panel-->
-    <h1 class=" font-bold text-4xl pt-16 text-center z-20">Sistema de pago en linea</h1>
-    <div class="panelDePago bg-blue-500 absolute rounded-3xl w-2/3 bg-opacity-80 mx-64 top-12 border-white border-2 grid grid-cols-2 pt-20 -z-10">
+    <h1 class=" font-bold text-4xl pt-16 text-center z-20 ">Sistema de pago en linea</h1>
+    <div class="panelDePago bg-blue-500 absolute rounded-3xl w-2/3 bg-opacity-80 mx-64 top-12 border-white border-2 grid grid-cols-2 pt-20 -z-10 ">
       
       <!--lado izquierdo-->
       <div>
@@ -35,11 +35,11 @@
           </div>
 
           <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
-            <input type="number" id="CC" placeholder="identificacion" class="placeholder:text-blue-400" required>
+            <input type="number" id="ID" placeholder="identificacion" class="placeholder:text-blue-400" required>
           </div>
 
           <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
-            <input type="text" id="razon" placeholder="Concepto De Pago" class="placeholder:text-blue-400" required>
+            <input type="text" id="reason" placeholder="Concepto De Pago" class="placeholder:text-blue-400" required>
           </div>
 
           <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
@@ -50,9 +50,9 @@
             <input type="number" id="amount" min="0" step="1" placeholder="Monto a pagar" class="placeholder:text-blue-400" required>
           </div>
 
-          <button type="submit" class="bg-white rounded-3xl ml-40 mt-8 mr-0 block py-2 px-8">Consultar</button>
+          <button type="submit" id="btnConsultar" onclick="validateInputs()" class="bg-white rounded-3xl ml-40 mt-8 mr-0 block py-2 px-8">Consultar</button>
         </form>
-        <div id="errorMessage" class="error"></div>
+        
       </div>
 
 
@@ -85,29 +85,37 @@
               <input type="number" id="amount" min="0" max="36" step="1" placeholder="cuotas" class="placeholder:text-blue-400 w-12 " required>
             </div>
 
-            <button type="submit" class="bg-white rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>
+            <button type="submit" id="btnPagar" onclick="" class="bg-white rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>
           </form>
           
         </div>
         
-        <!--form de credito-->
-        <div id="formaDePagoPSE" class="bg-blue-300 mt-4 rounded-3xl bg-opacity-80 text-center hidden">
-          <img src="/assets/logopsenuevo.png" alt="PSE" class="inline-block w-auto ">
+        <!--form de PSE-->
+        <div id="formaDePagoPSE" class="bg-blue-300 mt-4 rounded-3xl bg-opacity-80 text-center hidden p-4">
+          <img src="/assets/logopsenuevo.png" alt="PSE" class="inline-block w-2/3 py-2">
           <form action="">
             <button type="submit" class="bg-white rounded-3xl block py-2 px-8 mx-auto">Pagar</button>
           </form>
           
         </div>
+
       </div>
 
+    </div>
+
+    <!--panel de confirmacion-->
+    <div class="panelDePago bg-blue-500 absolute rounded-3xl w-2/3 bg-opacity-80 mx-64 top-12 border-white border-2 pt-20 -z-10 hidden">
+      <img src="" alt="Check">
+
+    </div>
+  
   </div>
-</div>
-<style>
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    display: none;
-  }
-</style>
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      display: none;
+    }
+  </style>
 </body>
 </html>
 <script src="scripts.js"></script>

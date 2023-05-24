@@ -1,35 +1,59 @@
+const pagar = document.getElementById('btnPagar')
+pagar.addEventListener
 
 function validateInputs() {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
+    var ID = document.getElementById("ID").value;
+    var reason = document.getElementById("reason").value;
+    var sede = document.getElementById("sede").value;
     var amount = document.getElementById("amount").value;
+
 
     var errorMessage = "";
 
     if (name.trim() === "") {
-      errorMessage += "Name is required.<br>";
+      errorMessage += "El nombre es requerido.<br>";
     }
 
     if (email.trim() === "") {
-      errorMessage += "Email is required.<br>";
+      errorMessage += "El Email es requerido.<br>";
     } else if (!isValidEmail(email)) {
-      errorMessage += "Email is invalid.<br>";
+      errorMessage += "El Email es invalido.<br>";
+    }
+
+    if (ID.trim() === "") {
+      errorMessage += "La identificacion es requerida.<br>";
+    } else if (isNaN(parseFloat(ID))) {
+      errorMessage += "La identificacion debe ser un numero.<br>";
+    }
+
+    if (reason.trim() === "") {
+      errorMessage += "El concepto de pago es requerido.<br>";
+    }
+
+    if (sede.trim() === "") {
+      errorMessage += "La sede es requerida.<br>";
     }
 
     if (amount.trim() === "") {
-      errorMessage += "Amount is required.<br>";
+      errorMessage += "La cantidad es requerido.<br>";
     } else if (isNaN(parseFloat(amount))) {
-      errorMessage += "Amount must be a valid number.<br>";
+      errorMessage += "La cantidad debe ser un numero.<br>";
     } else if (parseFloat(amount) <= 0) {
-        errorMessage += "Amount must be greater than zero.<br>";
+        errorMessage += "La cantidad debe ser mas que zero.<br>";
     }
 
-    var errorElement = document.getElementById("errorMessage");
     if (errorMessage !== "") {
-      errorElement.innerHTML = errorMessage;
+      console.log(errorMessage);
     } else {
-      errorElement.innerHTML = "";
-      createPaymentObject(name, email, parseFloat(amount));
+      console.log("Realizando pago");
+
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+      //Aqui se activara el pago
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+      
+      createPaymentObject(name, email, parseFloat(ID), reason, sede, parseFloat(amount));
     }
 }
 
@@ -39,11 +63,14 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-function createPaymentObject(name, email, amount) {
+function createPaymentObject(name, email, ID, reason, sede, amount) {
     // Create a payment object using the values from the form
     var payment = {
       name: name,
       email: email,
+      ID:ID,
+      reason:reason,
+      sede:sede,
       amount: amount
     };
 
@@ -55,8 +82,6 @@ function createPaymentObject(name, email, amount) {
 
 //cambio en forma de pago
 var change = document.getElementById("tipoPago");
-console.log("change:");
-console.log(change);
 change.addEventListener('change', function cambioFormaPago(){
     var selected = document.getElementById("tipoPago")
     var seltext = selected.options[selected.selectedIndex].text;
