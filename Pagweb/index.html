@@ -26,31 +26,31 @@
       <!--lado izquierdo-->
       <div class="p-8 inline-block text-center">
 
-        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+        <div class="bg-white rounded-3xl mb-3 block py-1 mx-8 2xl:mx-24">
           <input type="text" id="name" placeholder="Nombre completo" class="placeholder:text-blue-400" required>
         </div>
 
-        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+        <div class="bg-white rounded-3xl mb-3 block py-1 mx-8 2xl:mx-24">
           <input type="email" id="email" placeholder="E-mail" class="placeholder:text-blue-400" required>
         </div>
 
-        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+        <div class="bg-white rounded-3xl mb-3 block py-1 mx-8 2xl:mx-24">
           <input type="number" id="ID" placeholder="identificacion" class="placeholder:text-blue-400" required>
         </div>
 
-        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+        <div class="bg-white rounded-3xl mb-3 block py-1 mx-8 2xl:mx-24">
           <input type="text" id="reason" placeholder="Concepto De Pago" class="placeholder:text-blue-400" required>
         </div>
 
-        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+        <div class="bg-white rounded-3xl mb-3 block py-1 mx-8 2xl:mx-24">
           <input type="text" id="sede"  placeholder="sede" class="placeholder:text-blue-400" required>
         </div>
 
-        <div class="bg-white rounded-3xl m-2 inline-block py-2 px-8">
+        <div class="bg-white rounded-3xl mb-3 block py-1 mx-8 2xl:mx-24">
           <input type="number" id="amount" min="0" step="1" placeholder="Monto a pagar" class="placeholder:text-blue-400" required>
         </div>
 
-        <button type="button" id="btnConsultar" onclick="validateInputs()" class="bg-white rounded-3xl ml-40 mt-8 mr-0 block py-2 px-8">Consultar</button>
+        <button type="button" id="btnLogIn" onclick="ValidateLogIn()" class="bg-white rounded-3xl block py-2 px-8 mt-8 mx-auto">Log in</button>
 
       </div>
 
@@ -59,7 +59,7 @@
       <div class="p-8">
 
         <!--Seleccion de tipo-->
-        <select name="" id="tipoPago" class=" block mx-auto bg-white rounded-3xl text-center py-2 px-12 text-blue-400">
+        <select name="" id="tipoPago" class=" hidden mx-auto bg-white rounded-3xl text-center py-2 px-12 text-blue-400 ">
           <option value="0">Medios de pago</option>
           <option value="1">Credito</option>
           <option value="2">PSE</option>

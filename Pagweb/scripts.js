@@ -1,7 +1,6 @@
-const pagar = document.getElementById('btnPagar')
-pagar.addEventListener
 
-function validateInputs() {
+
+function ValidateLogIn() {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
     var ID = document.getElementById("ID").value;
@@ -47,13 +46,15 @@ function validateInputs() {
     if (errorMessage !== "") {
       console.log(errorMessage);
     } else {
-      console.log("Realizando pago");
+      console.log("Log In Realizado");
+      
 
       //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-      //Aqui se activara el pago
+      //Aqui Log In
       //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-      
-      createPaymentObject(name, email, parseFloat(ID), reason, sede, parseFloat(amount));
+      var medios = document.getElementById("tipoPago");
+      medios.style.display = "block";
+      createLogInObject(name, email, parseFloat(ID), reason, sede, parseFloat(amount));
     }
 }
 
@@ -63,9 +64,9 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-function createPaymentObject(name, email, ID, reason, sede, amount) {
-    // Create a payment object using the values from the form
-    var payment = {
+function createLogInObject(name, email, ID, reason, sede, amount) {
+    // Crea un JSON con los datos del usuario
+    var LogIn = {
       name: name,
       email: email,
       ID:ID,
@@ -73,9 +74,8 @@ function createPaymentObject(name, email, ID, reason, sede, amount) {
       sede:sede,
       amount: amount
     };
-
     // Perform further actions with the payment object
-    console.log(payment);
+    console.log(LogIn);
 }
 
 
