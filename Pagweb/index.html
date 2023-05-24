@@ -50,7 +50,7 @@
             <input type="number" id="amount" min="0" step="1" placeholder="Monto a pagar" class="placeholder:text-blue-400" required>
           </div>
 
-          <button type="submit" class="bg-white rounded-3xl ml-2 mt-8 mr-0 block py-2 px-8">Submit</button>
+          <button type="submit" class="bg-white rounded-3xl ml-40 mt-8 mr-0 block py-2 px-8">Consultar</button>
         </form>
         <div id="errorMessage" class="error"></div>
       </div>
@@ -58,7 +58,10 @@
 
       <!--lado derecho-->
       <div class="p-8">
+
+        <!--Seleccion de tipo-->
         <select name="" id="tipoPago" class=" block mx-auto bg-white rounded-3xl text-center py-2 px-12 text-blue-400">
+          <option value="0"></option>
           <option value="1">Credito</option>
           <option value="2">PSE</option>
         </select>
@@ -70,24 +73,33 @@
         </div>
 
         <!--form de credito-->
-        <div id="formaDePagoCred" class="bg-blue-300 mt-4 rounded-3xl bg-opacity-80 text-center hidden">
-          <img src="/assets/TARJETAS-430x119.png" alt="tarjetas" class="inline-block w-1/3 ">
+        <div id="formaDePagoCred" class="bg-blue-300 my-4 rounded-3xl bg-opacity-80 text-center hidden p-4">
+          <img src="/assets/TARJETAS-430x119.png" alt="tarjetas" class="inline-block w-1/2 ">
           <form action="">
 
             <div class="bg-white rounded-3xl inline-block py-2 px-8">
               <input type="number" id="amount" min="0" step="" placeholder="nro tarjeta" class="placeholder:text-blue-400" required>
             </div>
 
-            <div class="bg-white rounded-3xl m-2 inline-block py-2 pl-2 pr-4 w-1/6">
+            <div class="bg-white rounded-3xl inline-block py-2 pl-2 pr-4 m-2 my-6 w-1/4">
               <input type="number" id="amount" min="0" max="36" step="1" placeholder="cuotas" class="placeholder:text-blue-400 w-12 " required>
             </div>
 
-            <button type="submit" class="bg-white rounded-3xl block py-2 px-8 mx-auto">Submit</button>
+            <button type="submit" class="bg-white rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>
           </form>
           
         </div>
         
+        <!--form de credito-->
+        <div id="formaDePagoPSE" class="bg-blue-300 mt-4 rounded-3xl bg-opacity-80 text-center hidden">
+          <img src="/assets/logopsenuevo.png" alt="PSE" class="inline-block w-auto ">
+          <form action="">
+            <button type="submit" class="bg-white rounded-3xl block py-2 px-8 mx-auto">Pagar</button>
+          </form>
+          
+        </div>
       </div>
+
   </div>
 </div>
 <style>

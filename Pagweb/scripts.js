@@ -60,22 +60,31 @@ console.log(change);
 change.addEventListener('change', function cambioFormaPago(){
     var selected = document.getElementById("tipoPago")
     var seltext = selected.options[selected.selectedIndex].text;
-    var sectionEJ = document.getElementById("formaDePagoEJ")
-    var sectionCred = document.getElementById("formaDePagoCred")
+    var sectionEJ = document.getElementById("formaDePagoEJ");
+    var sectionCred = document.getElementById("formaDePagoCred");
+    var sectionPSE = document.getElementById("formaDePagoPSE");
+
 
     if (seltext == "Credito") {
         //mostrar para credito
         console.log("entro a credito")
         sectionEJ.style.display = "none";
         sectionCred.style.display = "block";
-
+        sectionPSE.style.display = "none";
 
     }else if (seltext == "PSE"){
         //mostrar para PSE
-
+        console.log("entro a PSE")
+        sectionEJ.style.display = "none";
+        sectionCred.style.display = "none";
+        sectionPSE.style.display = "block";
 
     }else{
         //mostrar default
+        console.log("entro a default")
+        sectionEJ.style.display = "block";
+        sectionCred.style.display = "none";
+        sectionPSE.style.display = "none";
     }
 }, false);
 
