@@ -69,7 +69,7 @@ function validateUserID(name, email, ID) {
   const jsonData = JSON.stringify(data);
 
   // Set the Azure Function URL
-  const url = 'https://paymentlogin.azurewebsites.net/api/HttpLogin?code=LZHygFYXaIVmb8Ts5qdwSsK1UIm0R1PSFvb8uu82OsHFAzFuiaULbQ==';
+  const url = 'https://paymentapp.azurewebsites.net/api/HttpLogin?code=98jgfag9g4Al6-VAC7RY0Y7V-gKmXfsfRf6t3p310PNwAzFulrIizg==';
 
   // Send the JSON data to the Azure Function
   fetch(url, {
