@@ -147,7 +147,7 @@ function validateUserID(name, email, ID) {
           .then(cardsData => {
             console.log('Response from httpAddCards Azure Function:', cardsData);
             var dropdown = document.getElementById('dropdown');
-
+            dropdown.options.length = 0;
             // Handle the response data from httpAddCards function
             // Assuming the response is an array of objects with columns "identificacion", "id", and "nro_tarjeta"
             for (var i = 0; i < cardsData.length; i++) {
