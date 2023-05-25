@@ -88,7 +88,7 @@ function validateUserID(name, email, ID) {
     })
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
-      if(responseData.ID != 0){
+      if(responseData.identificacion != 0){
         console.log("Log In Realizado");
         var medios = document.getElementById("tipoPago");
         medios.style.display = "block";
