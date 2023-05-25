@@ -225,12 +225,15 @@ function ProcessPayment() {
   const hora = getCurrentTime();
   const fecha = getCurrentDate();
   const metodo_pago = document.getElementById("tipoPago").value;
-  const id = document.getElementById("dropdown").value;
   var cuotas;
+  var id;
   if (metodo_pago == "Credito") {
     cuotas = document.getElementById("cuota").value;
+    id = document.getElementById("dropdown").value;
+
   } else {
     cuotas = 1;
+    id = document.getElementById("dropdowndebito").value;
   }
   const estado = 1;
   const sede = document.getElementById("sede").value;
