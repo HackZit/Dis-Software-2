@@ -105,11 +105,12 @@ function validateUserID(name, email, ID) {
   // Convert the data object to JSON
   const jsonData = JSON.stringify(data);
 
-  // Set the Azure Function URL
-  const url = 'https://paymentapp.azurewebsites.net/api/HttpLogin?code=98jgfag9g4Al6-VAC7RY0Y7V-gKmXfsfRf6t3p310PNwAzFulrIizg==';
+  // Set the Azure Function URLs
+  const loginUrl = 'https://paymentapp.azurewebsites.net/api/HttpLogin?code=98jgfag9g4Al6-VAC7RY0Y7V-gKmXfsfRf6t3p310PNwAzFulrIizg==';
+  const addCardsUrl = 'https://paymentapp.azurewebsites.net/api/httpAddCards?code=p6bc3jE_RX61BAWQoYM72Z0TyGl9Bz807OELj39rKwIMAzFuBjQbNw=='; 
 
-  // Send the JSON data to the Azure Function
-  fetch(url, {
+  // Send the JSON data to the Azure Function for user validation
+  fetch(loginUrl, {
     method: 'POST',
     body: jsonData,
     headers: {
@@ -125,20 +126,63 @@ function validateUserID(name, email, ID) {
     })
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
-      if(responseData.identificacion != 0){
+      if (responseData.identificacion != 0) {
         console.log("Log In Realizado");
+
+        // Call the Azure Function for adding cards
+        fetch(addCardsUrl, {
+          method: 'POST',
+          body: jsonData,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json(); // Parse the response as JSON
+            } else {
+              throw new Error('Error calling httpAddCards Azure Function.');
+            }
+          })
+          .then(cardsData => {
+            console.log('Response from httpAddCards Azure Function:', cardsData);
+            var dropdown = document.getElementById('dropdown');
+
+            // Handle the response data from httpAddCards function
+            // Assuming the response is an array of objects with columns "identificacion", "id", and "nro_tarjeta"
+            for (var i = 0; i < cardsData.length; i++) {
+              // Crear una nueva opción
+              var option = document.createElement('option');
+            
+              // Asignar el valor y la etiqueta de la opción
+              option.value = cardsData[i].value;
+              option.text = cardsData[i].label;
+            
+              // Agregar la opción al dropdown
+              dropdown.appendChild(option);
+            }
+
+            // Continue with any further logic or UI updates
+          })
+          .catch(error => {
+            console.error('An error occurred while calling httpAddCards Azure Function:', error);
+          });
+
         var medios = document.getElementById("tipoPago");
         medios.style.display = "block";
+
+        // ...
       } else {
         console.log("Log In Fallido, Usuario no existe");
       }
 
-      // Handle the response data as needed
+      // Continue with any further logic or UI updates
     })
     .catch(error => {
-      console.error('An error occurred:', error);
+      console.error('An error occurred during user validation:', error);
     });
 }
+
 
 function isValidEmail(email) {
     // Basic email validation regex
