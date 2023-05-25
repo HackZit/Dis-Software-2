@@ -53,19 +53,16 @@ function ValidateLogIn() {
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     var medios = document.getElementById("tipoPago");
     medios.style.display = "block";
-    validateUserID(name, email, parseFloat(ID), reason, sede, parseFloat(amount));
+    validateUserID(name, email, parseFloat(ID));
   }
 }
 
-function validateUserID(name, email, ID, reason, sede, amount) {
+function validateUserID(name, email, ID) {
   // Create an object with the values
   const data = {
     name: name,
     email: email,
-    ID: ID,
-    reason: reason,
-    sede: sede,
-    amount: amount
+    ID: ID
   };
 
   // Convert the data object to JSON
