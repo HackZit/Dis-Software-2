@@ -345,7 +345,7 @@ function ValidatePayment() {
       }
     })
     .then(responseData => {
-      console.log('Response from Azure Function:', responseData);
+      console.log('Response from Azure Function:', responseData.length);
       // Handle the response data as needed
       if (responseData.length > 1) {
         console.log("Empezando a procesar pago: ", responseData);
