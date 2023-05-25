@@ -21,7 +21,7 @@
     <!--todo el panel-->
     <h1 class=" font-bold text-4xl absolute pt-16 text-center z-20 w-screen ">Sistema de pago en linea</h1>
     <div class=" h-12"></div>
-    <div class="panelDePago bg-blue-500 rounded-3xl w-2/3 bg-opacity-80 mx-auto border-white border-2 grid grid-cols-2 pt-20 -z-10 ">
+    <div class="panelDePago bg-blue-500 rounded-3xl w-2/3 bg-opacity-80 mx-auto border-white border-2 grid grid-cols-2 grid-rows-1 pt-20 -z-10 ">
       
       <!--lado izquierdo-->
       <div class="p-8 inline-block text-center">
@@ -50,7 +50,7 @@
           <input type="number" id="amount" min="0" step="1" placeholder="Monto a pagar" class="placeholder:text-blue-400" required>
         </div>
 
-        <button type="button" id="btnLogIn" onclick="ValidateLogIn()" class="bg-white rounded-3xl block py-2 px-8 mt-8 mx-auto">Log in</button>
+        <button type="button" id="btnLogIn" onclick="ValidateLogIn()" class="bg-amber-400 font-bold rounded-3xl block py-2 px-8 mt-8 mx-auto">Log in</button>
 
       </div>
 
@@ -59,7 +59,7 @@
       <div class="p-8">
 
         <!--Seleccion de tipo-->
-        <select name="" id="tipoPago" class=" hidden mx-auto bg-white rounded-3xl text-center py-2 px-12 text-blue-400 ">
+        <select name="" id="tipoPago" class="hidden mx-auto bg-white rounded-3xl py-2 px-12 text-blue-400 ">
           <option value="0">Medios de pago</option>
           <option value="1">Credito</option>
           <option value="2">PSE</option>
@@ -83,7 +83,7 @@
               <input type="number" id="amount" min="0" max="36" step="1" placeholder="cuotas" class="placeholder:text-blue-400 w-12 " required>
             </div>
 
-            <button type="button" id="btnPagar" onclick="validateInputs()" class="bg-white rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>
+            <button type="button" id="btnPagar" onclick="validateInputs()" class="bg-amber-400 font-bold rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>
           
         </div>
         
@@ -96,6 +96,12 @@
           
         </div>
 
+      </div>
+
+      <!--lado bajo (consultar) -->
+      <div id="panelConsulta" class="hidden relative bg-blue-200 bg-opacity-80 col-span-2  h-16 mx-12 mb-4 -mt-4 rounded-full">
+        <button type="button" id="btnConsulta" onclick="" class="bg-amber-400 font-bold rounded-3xl inline-block py-2 px-8 m-3">Consultar Saldo</button>
+        <div class="absolute right-6 top-5 ">Saldo Disponible: $000000000000</div>
       </div>
 
     </div>

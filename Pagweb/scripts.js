@@ -1,61 +1,60 @@
 
 
 function ValidateLogIn() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var ID = document.getElementById("ID").value;
-    var reason = document.getElementById("reason").value;
-    var sede = document.getElementById("sede").value;
-    var amount = document.getElementById("amount").value;
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var ID = document.getElementById("ID").value;
+  var reason = document.getElementById("reason").value;
+  var sede = document.getElementById("sede").value;
+  var amount = document.getElementById("amount").value;
 
+  var errorMessage = "";
 
-    var errorMessage = "";
+  if (name.trim() === "") {
+    errorMessage += "El nombre es requerido.<br>";
+  }
 
-    if (name.trim() === "") {
-      errorMessage += "El nombre es requerido.<br>";
-    }
+  if (email.trim() === "") {
+    errorMessage += "El Email es requerido.<br>";
+  } else if (!isValidEmail(email)) {
+    errorMessage += "El Email es invalido.<br>";
+  }
 
-    if (email.trim() === "") {
-      errorMessage += "El Email es requerido.<br>";
-    } else if (!isValidEmail(email)) {
-      errorMessage += "El Email es invalido.<br>";
-    }
+  if (ID.trim() === "") {
+    errorMessage += "La identificacion es requerida.<br>";
+  } else if (isNaN(parseFloat(ID))) {
+    errorMessage += "La identificacion debe ser un numero.<br>";
+  }
 
-    if (ID.trim() === "") {
-      errorMessage += "La identificacion es requerida.<br>";
-    } else if (isNaN(parseFloat(ID))) {
-      errorMessage += "La identificacion debe ser un numero.<br>";
-    }
+  if (reason.trim() === "") {
+    errorMessage += "El concepto de pago es requerido.<br>";
+  }
 
-    if (reason.trim() === "") {
-      errorMessage += "El concepto de pago es requerido.<br>";
-    }
+  if (sede.trim() === "") {
+    errorMessage += "La sede es requerida.<br>";
+  }
 
-    if (sede.trim() === "") {
-      errorMessage += "La sede es requerida.<br>";
-    }
+  if (amount.trim() === "") {
+    errorMessage += "La cantidad es requerido.<br>";
+  } else if (isNaN(parseFloat(amount))) {
+    errorMessage += "La cantidad debe ser un numero.<br>";
+  } else if (parseFloat(amount) <= 0) {
+      errorMessage += "La cantidad debe ser mas que zero.<br>";
+  }
 
-    if (amount.trim() === "") {
-      errorMessage += "La cantidad es requerido.<br>";
-    } else if (isNaN(parseFloat(amount))) {
-      errorMessage += "La cantidad debe ser un numero.<br>";
-    } else if (parseFloat(amount) <= 0) {
-        errorMessage += "La cantidad debe ser mas que zero.<br>";
-    }
+  if (errorMessage !== "") {
+    console.log(errorMessage);
+  } else {
+    console.log("Log In Realizado");
+    
 
-    if (errorMessage !== "") {
-      console.log(errorMessage);
-    } else {
-      console.log("Log In Realizado");
-      
-
-      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-      //Aqui Log In
-      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-      var medios = document.getElementById("tipoPago");
-      medios.style.display = "block";
-      createLogInObject(name, email, parseFloat(ID), reason, sede, parseFloat(amount));
-    }
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //Aqui Log In
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    var medios = document.getElementById("tipoPago");
+    medios.style.display = "block";
+    createLogInObject(name, email, parseFloat(ID), reason, sede, parseFloat(amount));
+  }
 }
 
 function isValidEmail(email) {
@@ -88,6 +87,8 @@ change.addEventListener('change', function cambioFormaPago(){
     var sectionEJ = document.getElementById("formaDePagoEJ");
     var sectionCred = document.getElementById("formaDePagoCred");
     var sectionPSE = document.getElementById("formaDePagoPSE");
+    var panelConsulta = document.getElementById("panelConsulta");
+
 
 
     if (seltext == "Credito") {
@@ -96,6 +97,7 @@ change.addEventListener('change', function cambioFormaPago(){
         sectionEJ.style.display = "none";
         sectionCred.style.display = "block";
         sectionPSE.style.display = "none";
+        panelConsulta.style.display = "block";
 
     }else if (seltext == "PSE"){
         //mostrar para PSE
@@ -103,6 +105,7 @@ change.addEventListener('change', function cambioFormaPago(){
         sectionEJ.style.display = "none";
         sectionCred.style.display = "none";
         sectionPSE.style.display = "block";
+        panelConsulta.style.display = "none";
 
     }else{
         //mostrar default
@@ -110,6 +113,8 @@ change.addEventListener('change', function cambioFormaPago(){
         sectionEJ.style.display = "block";
         sectionCred.style.display = "none";
         sectionPSE.style.display = "none";
+        panelConsulta.style.display = "none";
+
     }
 }, false);
 
