@@ -147,20 +147,35 @@ function validateUserID(name, email, ID) {
           .then(cardsData => {
             console.log('Response from httpAddCards Azure Function:', cardsData);
             var dropdown = document.getElementById('dropdown');
+            var dropdowndeb = document.getElementById('dropdowndebito');
+            dropdowndeb.options.length = 0;
             dropdown.options.length = 0;
             // Handle the response data from httpAddCards function
             // Assuming the response is an array of objects with columns "identificacion", "id", and "nro_tarjeta"
-            for (var i = 0; i < cardsData.length; i++) {
+            for (var i = 0; i < cardsData.Credito.data.length; i++) {
               // Crear una nueva opción
               var option = document.createElement('option');
             
               // Asignar el valor y la etiqueta de la opción
-              option.value = cardsData[i].value;
-              option.text = cardsData[i].label;
+              option.value = cardsData[i].Credito.data.value;
+              option.text = cardsData[i].Credito.data.label;
             
               // Agregar la opción al dropdown
               dropdown.appendChild(option);
             }
+
+            for (var i = 0; i < cardsData.Debito.data.length; i++) {
+              // Crear una nueva opción
+              var option = document.createElement('option');
+            
+              // Asignar el valor y la etiqueta de la opción
+              option.value = cardsData[i].Debito.data.value;
+              option.text = cardsData[i].Debito.data.label;
+            
+              // Agregar la opción al dropdown
+              dropdowndeb.appendChild(option);
+            }
+
 
             // Continue with any further logic or UI updates
           })
@@ -211,7 +226,12 @@ function ProcessPayment() {
   const fecha = getCurrentDate();
   const metodo_pago = document.getElementById("tipoPago").value;
   const id = document.getElementById("dropdown").value;
-  const cuotas = document.getElementById("cuota").value;
+  var cuotas;
+  if (metodo_pago == "Credito") {
+    cuotas = document.getElementById("cuota").value;
+  } else {
+    cuotas = 1;
+  }
   const estado = 1;
   const sede = document.getElementById("sede").value;
   const razon = document.getElementById("reason").value;
@@ -268,7 +288,12 @@ function ValidatePayment() {
   const fecha = getCurrentDate();
   const metodo_pago = document.getElementById("tipoPago").value;
   const id = document.getElementById("dropdown").value;
-  const cuotas = document.getElementById("cuota").value;
+  var cuotas;
+  if (metodo_pago == "Credito") {
+    cuotas = document.getElementById("cuota").value;
+  } else {
+    cuotas = 1;
+  }
   const estado = 1;
   const sede = document.getElementById("sede").value;
   const razon = document.getElementById("reason").value;
