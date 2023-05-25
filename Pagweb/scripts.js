@@ -307,7 +307,7 @@ function ValidatePayment() {
   const amount = document.getElementById("amount").value;
 
   // Create the JSON object
-  const jsonData = {
+  const payload = {
     identificacion: identificacion,
     hora: hora,
     fecha: fecha,
@@ -321,39 +321,32 @@ function ValidatePayment() {
   };
 
   // Convert the JSON object to a string
-  const jsonString = JSON.stringify(jsonData);
+  const jsonData = JSON.stringify(payload);
 
   // Set the Azure Function URL
   const url = "https://paymentapp.azurewebsites.net/api/HttpValidatePayment?code=_VstjfGFXd0IESJd8kDR3pSfZShwHhwsI6bv1D0gHWLSAzFuyWS_gA==";
 
   // Send the JSON data to the Azure Function
   fetch(url, {
-    method: "POST",
-    body: jsonString,
+    method: 'POST',
+    body: jsonData,
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     }
   })
     .then(response => {
       if (response.ok) {
         return response.json(); // Parse the response as JSON
       } else {
-        throw new Error("Error sending request to Azure Function.");
+        throw new Error('Error sending data to Azure Function.');
       }
     })
     .then(responseData => {
-      console.log("Validation response: " + responseData);
-      if (responseData.length > 0) {
-        // Handle the case when validation returns an ID
-        console.log("Validation response: " + responseData[0]);
-        ProcessPayment();
-
-      } else {
-        console.log("Validation failed. No ID found.");
-      }
+      console.log('Response from Azure Function:', responseData);
+      // Handle the response data as needed
     })
     .catch(error => {
-      console.error("An error occurred:", error);
+      console.error('An error occurred:', error);
     });
 }
 
