@@ -107,9 +107,23 @@
     </div>
 
     <!--panel de confirmacion-->
-    <div class="panelDePago bg-blue-500 absolute rounded-3xl w-2/3 bg-opacity-80 mx-64 top-12 border-white border-2 pt-20 -z-10 hidden">
-      <img src="" alt="Check">
+    <div class="panelDePago hidden bg-blue-500 rounded-3xl w-2/3 bg-opacity-80 mx-auto border-white border-2 pt-20 -z-10 ">
+      <img src="/assets/GreenCheck.png" alt="Check" class="w-1/3 block mx-auto">
+      <div class="block text-center font-bold text-white text-3xl m-8">Pago completado correctamente!</div>
+      <div class="text-center">
+        <button type="button" id="" onclick="volver()" class="bg-amber-400 font-bold rounded-3xl inline-block py-2 px-8 mb-8 mx-8">Volver al comercio</button>
+        <button type="button" id="" onclick="imprimir()" class="bg-amber-400 font-bold rounded-3xl inline-block py-2 px-8 mb-8 mx-8">Imprimir comprobante</button>
+      </div>
+    </div>
 
+    <!--panel de fallo-->
+    <div class="panelDePago hidden bg-blue-500 rounded-3xl w-2/3 bg-opacity-80 mx-auto border-white border-2 pt-20 -z-10 ">
+      <img src="/assets/redX (1).png" alt="fallo"  class="w-1/3 block mx-auto">
+      <div class="block text-center font-bold text-white text-3xl m-8">Error al procesar el pago! Intente nuevamente.</div>
+      <div class="text-center">
+        <button type="button" id="" onclick="volver()" class="bg-amber-400 font-bold rounded-3xl inline-block py-2 px-8 mb-8 mx-8">Volver al comercio</button>
+        <button type="button" id="" onclick="imprimir()" class="bg-amber-400 font-bold rounded-3xl inline-block py-2 px-8 mb-8 mx-8">Imprimir comprobante</button>
+      </div>
     </div>
   
   </div>
