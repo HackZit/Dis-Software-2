@@ -157,8 +157,8 @@ function validateUserID(name, email, ID) {
               var option = document.createElement('option');
             
               // Asignar el valor y la etiqueta de la opción
-              option.value = cardsData[i].Credito.data.value;
-              option.text = cardsData[i].Credito.data.label;
+              option.value = cardsData.Credito.data[i].value;
+              option.text = cardsData.Credito.data[i].label;
             
               // Agregar la opción al dropdown
               dropdown.appendChild(option);
@@ -169,8 +169,8 @@ function validateUserID(name, email, ID) {
               var option = document.createElement('option');
             
               // Asignar el valor y la etiqueta de la opción
-              option.value = cardsData[i].Debito.data.value;
-              option.text = cardsData[i].Debito.data.label;
+              option.value = cardsData.Debito.data[i].value;
+              option.text = cardsData.Debito.data[i].label;
             
               // Agregar la opción al dropdown
               dropdowndeb.appendChild(option);
