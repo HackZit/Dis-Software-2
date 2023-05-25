@@ -45,14 +45,14 @@ function ValidateLogIn() {
   if (errorMessage !== "") {
     console.log(errorMessage);
   } else {
-    console.log("Log In Realizado");
+    console.log("Intentando iniciar...");
+
     
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //Aqui Log In
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    var medios = document.getElementById("tipoPago");
-    medios.style.display = "block";
+
     validateUserID(name, email, parseFloat(ID));
   }
 }
@@ -88,6 +88,14 @@ function validateUserID(name, email, ID) {
     })
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
+      if(responseData.ID != 0){
+        console.log("Log In Realizado");
+        var medios = document.getElementById("tipoPago");
+        medios.style.display = "block";
+      } else {
+        console.log("Log In Fallido, Usuario no existe");
+      }
+
       // Handle the response data as needed
     })
     .catch(error => {
