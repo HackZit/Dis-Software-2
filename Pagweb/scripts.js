@@ -342,6 +342,7 @@ function ValidatePayment() {
       }
     })
     .then(responseData => {
+      console.log("Validation response: " + responseData[0]);
       if (responseData.length > 0) {
         // Handle the case when validation returns an ID
         console.log("Validation response: " + responseData[0]);
