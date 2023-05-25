@@ -1,6 +1,13 @@
-
+const btnlogspam = 0
+const btnLogIn = document.getElementById("btnLogIn");
+function nada(){}
 
 function ValidateLogIn() {
+
+  btnLogIn.innerHTML = "verificando";
+  btnLogIn.style.backgroundColor = "#78350f"
+  btnLogIn.onclick = nada;
+  
   var name = document.getElementById("name").value;
   var email = document.getElementById("email").value;
   var ID = document.getElementById("ID").value;
@@ -41,20 +48,25 @@ function ValidateLogIn() {
   } else if (parseFloat(amount) <= 0) {
       errorMessage += "La cantidad debe ser mas que zero.<br>";
   }
-
+  var errorDiv = document.getElementById('errorMessage')
   if (errorMessage !== "") {
+    errorDiv.innerHTML = "Error <br>"+ errorMessage;
+    errorDiv.style.display = "inline-block";
     console.log(errorMessage);
+    btnLogIn.innerHTML = "Log in";
+    btnLogIn.style.backgroundColor = "#fbbf24"
+    btnLogIn.onclick = ValidateLogIn;
   } else {
     console.log("Intentando iniciar...");
-
-    
-
+    errorDiv.style.display = "none";
+    errorDiv.innerHTML = errorMessage;
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //Aqui Log In
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     validateUserID(name, email, parseFloat(ID));
   }
+  
 }
 
 function CheckSaldo() {
@@ -128,6 +140,9 @@ function validateUserID(name, email, ID) {
       console.log('Response from Azure Function:', responseData);
       if (responseData.identificacion != 0) {
         console.log("Log In Realizado");
+        btnLogIn.innerHTML = "Log out";
+        btnLogIn.style.backgroundColor = "#fbbf24"
+        btnLogIn.onclick = nada;
 
         // Call the Azure Function for adding cards
         fetch(addCardsUrl, {
@@ -189,6 +204,10 @@ function validateUserID(name, email, ID) {
         // ...
       } else {
         console.log("Log In Fallido, Usuario no existe");
+        btnLogIn.innerHTML = "Log in";
+        btnLogIn.style.backgroundColor = "#fbbf24"
+        btnLogIn.onclick = ValidateLogIn;
+        
       }
 
       // Continue with any further logic or UI updates
