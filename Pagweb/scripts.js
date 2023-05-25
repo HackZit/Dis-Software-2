@@ -98,6 +98,7 @@ function CheckSaldo() {
   .then(data => {
     // Process the response data
     console.table(data);
+    // Mostrar tabla de saldos
   })
   .catch(error => {
     // Handle any errors that occurred during the request
@@ -197,7 +198,9 @@ function validateUserID(name, email, ID) {
           .catch(error => {
             console.error('An error occurred while calling httpAddCards Azure Function:', error);
           });
-
+            
+          
+        // Logica de botones y modificaciones del front end
         var medios = document.getElementById("tipoPago");
         medios.style.display = "block";
 
@@ -296,7 +299,7 @@ function ProcessPayment() {
     })
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
-      // Handle the response data as needed
+      // Mover a pestaña de confirmación
     })
     .catch(error => {
       console.error('An error occurred:', error);
@@ -326,7 +329,7 @@ function ValidatePayment() {
   const amount = document.getElementById("amount").value;
 
   // Create the JSON object
-  const jsonData = {
+  const payload = {
     identificacion: identificacion,
     hora: hora,
     fecha: fecha,
@@ -340,38 +343,39 @@ function ValidatePayment() {
   };
 
   // Convert the JSON object to a string
-  const jsonString = JSON.stringify(jsonData);
+  const jsonData = JSON.stringify(payload);
 
   // Set the Azure Function URL
   const url = "https://paymentapp.azurewebsites.net/api/HttpValidatePayment?code=_VstjfGFXd0IESJd8kDR3pSfZShwHhwsI6bv1D0gHWLSAzFuyWS_gA==";
 
   // Send the JSON data to the Azure Function
   fetch(url, {
-    method: "POST",
-    body: jsonString,
+    method: 'POST',
+    body: jsonData,
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     }
   })
     .then(response => {
       if (response.ok) {
         return response.json(); // Parse the response as JSON
       } else {
-        throw new Error("Error sending request to Azure Function.");
+        throw new Error('Error sending data to Azure Function.');
       }
     })
     .then(responseData => {
-      if (responseData.length > 0) {
-        // Handle the case when validation returns an ID
-        console.log("Validation response: " + responseData[0]);
+      console.log('Response from Azure Function:', responseData.length);
+      // Handle the response data as needed
+      if (responseData.length > 1) {
+        console.log("Empezando a procesar pago: ", responseData);
         ProcessPayment();
-
       } else {
-        console.log("Validation failed. No ID found.");
+        console.log("Pago rechazado: ", responseData);
+        // Mover a pestaña de rechazados
       }
     })
     .catch(error => {
-      console.error("An error occurred:", error);
+      console.error('An error occurred:', error);
     });
 }
 
@@ -404,6 +408,7 @@ function HistoryChannel() {
   })
   .then(responseData => {
     console.log('Response received:', responseData); // Handle the response data
+    // Mover a pestaña de historial
   })
   .catch(error => {
     console.error('Error sending data:', error);
