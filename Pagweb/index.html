@@ -61,8 +61,8 @@
         <!--Seleccion de tipo-->
         <select name="" id="tipoPago" class="hidden mx-auto bg-white rounded-3xl py-2 px-12 text-blue-400 ">
           <option value="0">Medios de pago</option>
-          <option value="1">Credito</option>
-          <option value="2">PSE</option>
+          <option value="Credito">Credito</option>
+          <option value="Debito">PSE</option>
         </select>
         
         <!--solo imagenes-->
@@ -81,7 +81,7 @@
             </div>
 
             <div class="bg-white rounded-3xl inline-block py-2 pl-2 pr-4 m-2 my-6 w-1/4">
-              <input type="number" id="amount" min="0" max="36" step="1" placeholder="cuotas" class="placeholder:text-blue-400 w-12 " required>
+              <input type="number" id="cuota" min="0" max="36" step="1" placeholder="cuotas" class="placeholder:text-blue-400 w-12 " required>
             </div>
 
             <button type="button" id="btnPagar" onclick="validateInputs()" class="bg-amber-400 font-bold rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>

@@ -204,6 +204,160 @@ function createLogInObject(name, email, ID, reason, sede, amount) {
     console.log(LogIn);
 }
 
+function ProcessPayment() {
+  // Retrieve the values
+  const identificacion = document.getElementById("ID").value;
+  const hora = getCurrentTime();
+  const fecha = getCurrentDate();
+  const metodo_pago = document.getElementById("tipoPago").value;
+  const id = document.getElementById("dropdown").value;
+  const cuotas = document.getElementById("cuota").value;
+  const estado = 1;
+  const sede = document.getElementById("sede").value;
+  const razon = document.getElementById("reason").value;
+  const amount = document.getElementById("amount").value;
+
+  // Create the JSON payload
+  const payload = {
+    identificacion,
+    hora,
+    fecha,
+    metodo_pago,
+    id,
+    cuotas,
+    estado,
+    sede,
+    razon,
+    amount
+  };
+
+  // Convert the payload to JSON
+  const jsonData = JSON.stringify(payload);
+
+  // Set the Azure Function URL
+  const url = 'https://paymentapp.azurewebsites.net/api/HttpProcessPayment?code=8coLpwJmh9PlG31a4drFl7wZNXM2aezAMPLPk50i7QlnAzFuKmExtQ==';
+
+  // Send the JSON data to the Azure Function
+  fetch(url, {
+    method: 'POST',
+    body: jsonData,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // Parse the response as JSON
+      } else {
+        throw new Error('Error sending data to Azure Function.');
+      }
+    })
+    .then(responseData => {
+      console.log('Response from Azure Function:', responseData);
+      // Handle the response data as needed
+    })
+    .catch(error => {
+      console.error('An error occurred:', error);
+    });
+}
+
+function ValidatePayment() {
+  // Get the values from the HTML elements
+  const identificacion = document.getElementById("ID").value;
+  const hora = getCurrentTime();
+  const fecha = getCurrentDate();
+  const metodo_pago = document.getElementById("tipoPago").value;
+  const id = document.getElementById("dropdown").value;
+  const cuotas = document.getElementById("cuota").value;
+  const estado = 1;
+  const sede = document.getElementById("sede").value;
+  const razon = document.getElementById("reason").value;
+  const amount = document.getElementById("amount").value;
+
+  // Create the JSON object
+  const jsonData = {
+    identificacion: identificacion,
+    hora: hora,
+    fecha: fecha,
+    metodo_pago: metodo_pago,
+    id: id,
+    cuotas: cuotas,
+    estado: estado,
+    sede: sede,
+    razon: razon,
+    amount: amount
+  };
+
+  // Convert the JSON object to a string
+  const jsonString = JSON.stringify(jsonData);
+
+  // Set the Azure Function URL
+  const url = "https://paymentapp.azurewebsites.net/api/HttpValidatePayment?code=_VstjfGFXd0IESJd8kDR3pSfZShwHhwsI6bv1D0gHWLSAzFuyWS_gA==";
+
+  // Send the JSON data to the Azure Function
+  fetch(url, {
+    method: "POST",
+    body: jsonString,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // Parse the response as JSON
+      } else {
+        throw new Error("Error sending request to Azure Function.");
+      }
+    })
+    .then(responseData => {
+      if (responseData.length > 0) {
+        // Handle the case when validation returns an ID
+        console.log("Validation successful. ID: " + responseData[0]);
+        ProcessPayment();
+
+      } else {
+        console.log("Validation failed. No ID found.");
+      }
+    })
+    .catch(error => {
+      console.error("An error occurred:", error);
+    });
+}
+
+
+
+function getCurrentTime() {
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let ampm = 'AM';
+
+  if (hours > 12) {
+    hours -= 12;
+    ampm = 'PM';
+  }
+
+  hours = addLeadingZero(hours);
+  minutes = addLeadingZero(minutes);
+
+  return `${hours}:${minutes} ${ampm}`;
+}
+
+function getCurrentDate() {
+  const now = new Date();
+  const year = now.getFullYear();
+  let month = now.getMonth() + 1;
+  let day = now.getDate();
+
+  month = addLeadingZero(month);
+  day = addLeadingZero(day);
+
+  return `${year}-${month}-${day}`;
+}
+
+function addLeadingZero(number) {
+  return number < 10 ? `0${number}` : number;
+}
 
 
 //cambio en forma de pago
