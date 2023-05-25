@@ -86,6 +86,7 @@ function CheckSaldo() {
   .then(data => {
     // Process the response data
     console.table(data);
+    // Mostrar tabla de saldos
   })
   .catch(error => {
     // Handle any errors that occurred during the request
@@ -182,7 +183,9 @@ function validateUserID(name, email, ID) {
           .catch(error => {
             console.error('An error occurred while calling httpAddCards Azure Function:', error);
           });
-
+            
+          
+        // Logica de botones y modificaciones del front end
         var medios = document.getElementById("tipoPago");
         medios.style.display = "block";
 
@@ -277,7 +280,7 @@ function ProcessPayment() {
     })
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
-      // Handle the response data as needed
+      // Mover a pestaña de confirmación
     })
     .catch(error => {
       console.error('An error occurred:', error);
@@ -344,6 +347,13 @@ function ValidatePayment() {
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
       // Handle the response data as needed
+      if (responseData.length > 1) {
+        console.log("Empezando a procesar pago: ", responseData);
+        ProcessPayment();
+      } else {
+        console.log("Pago rechazado: ", responseData);
+        // Mover a pestaña de rechazados
+      }
     })
     .catch(error => {
       console.error('An error occurred:', error);
@@ -379,6 +389,7 @@ function HistoryChannel() {
   })
   .then(responseData => {
     console.log('Response received:', responseData); // Handle the response data
+    // Mover a pestaña de historial
   })
   .catch(error => {
     console.error('Error sending data:', error);
