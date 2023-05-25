@@ -53,8 +53,49 @@ function ValidateLogIn() {
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     var medios = document.getElementById("tipoPago");
     medios.style.display = "block";
-    createLogInObject(name, email, parseFloat(ID), reason, sede, parseFloat(amount));
+    validateUserID(name, email, parseFloat(ID), reason, sede, parseFloat(amount));
   }
+}
+
+function validateUserID(name, email, ID, reason, sede, amount) {
+  // Create an object with the values
+  const data = {
+    name: name,
+    email: email,
+    ID: ID,
+    reason: reason,
+    sede: sede,
+    amount: amount
+  };
+
+  // Convert the data object to JSON
+  const jsonData = JSON.stringify(data);
+
+  // Set the Azure Function URL
+  const url = 'https://paymentlogin.azurewebsites.net/api/HttpLogin?code=LZHygFYXaIVmb8Ts5qdwSsK1UIm0R1PSFvb8uu82OsHFAzFuiaULbQ==';
+
+  // Send the JSON data to the Azure Function
+  fetch(url, {
+    method: 'POST',
+    body: jsonData,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // Parse the response as JSON
+      } else {
+        throw new Error('Error sending data to Azure Function.');
+      }
+    })
+    .then(responseData => {
+      console.log('Response from Azure Function:', responseData);
+      // Handle the response data as needed
+    })
+    .catch(error => {
+      console.error('An error occurred:', error);
+    });
 }
 
 function isValidEmail(email) {
