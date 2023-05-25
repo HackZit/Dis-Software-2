@@ -54,7 +54,7 @@
 
         <div id="errorMessage" class=" hidden border-2 border-white mx-auto rounded-3xl mt-4 p-2 bg-slate-300"></div>
 
-        <button type="button" id="btnHistory" onclick="HistoryChannel()" class="bg-amber-400 font-bold rounded-3xl block py-2 px-8 mt-8 mx-auto">Facturas</button>
+        <button type="button" id="btnHistory" onclick="HistoryChannel()" class="hidden bg-amber-400 font-bold rounded-3xl py-2 px-8 mt-8 mx-auto">Facturas</button>
 
       </div>
 
@@ -76,7 +76,7 @@
         </div>
 
         <!--form de credito-->
-        <div id="formaDePagoCred" class="bg-blue-300 my-4 rounded-3xl bg-opacity-80 text-center hidden p-4">
+        <div id="formaDePagoCred" class="hidden bg-blue-300 my-4 rounded-3xl bg-opacity-80 text-center  p-4">
           <img src="/assets/TARJETAS-430x119.png" alt="tarjetas" class="inline-block w-1/2 ">
 
             <div class="bg-white rounded-3xl inline-block py-2 px-8">
@@ -85,7 +85,44 @@
             </div>
 
             <div class="bg-white rounded-3xl inline-block py-2 pl-2 pr-4 m-2 my-6 w-1/4">
-              <input type="number" id="cuota" min="0" max="36" step="1" placeholder="cuotas" class="placeholder:text-blue-400 w-12 " required>
+              <select id="cuota" class="placeholder:text-blue-400 w-12 ">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+              </select>
             </div>
 
             <button type="button" id="btnPagar" onclick="ValidatePayment()" class="bg-amber-400 font-bold rounded-3xl block py-2 px-8 mx-auto ">Pagar</button>
@@ -93,22 +130,21 @@
         </div>
         
         <!--form de PSE-->
-        <div id="formaDePagoPSE" class="bg-blue-300 mt-4 rounded-3xl bg-opacity-80 text-center hidden p-4">
+        <div id="formaDePagoPSE" class="hidden bg-blue-300 mt-4 rounded-3xl bg-opacity-80 text-center  p-4">
           <img src="/assets/logopsenuevo.png" alt="PSE" class="inline-block w-2/3 py-2">
 
             <select type="text" id="dropdowndebito" min="0" step="" placeholder="Tarjeta Debito" class="placeholder:text-blue-400" required>
             </select>
-            <button type="button" onclick="ValidatePayment()" class="bg-white rounded-3xl block py-2 px-8 mx-auto">Pagar</button>
+            <button type="button" id="btnPagarDeb" onclick="ValidatePayment()" class="bg-white rounded-3xl block py-2 px-8 mx-auto">Pagar</button>
 
-          
         </div>
 
       </div>
 
       <!--lado bajo (consultar) -->
-      <div id="panelConsulta" class="hidden relative bg-blue-200 bg-opacity-80 col-span-2  h-16 mx-12 mb-4 -mt-4 rounded-full">
-        <button type="button" id="btnConsulta" onclick="CheckSaldo()" class="bg-amber-400 font-bold rounded-3xl inline-block py-2 px-8 m-3">Consultar Saldo</button>
-        <div class="absolute right-6 top-5 ">Saldo Disponible: $000000000000</div>
+      <div id="panelConsulta" class="block relative bg-blue-200 bg-opacity-80 col-span-2  h-16 mx-12 mb-4 -mt-4 rounded-3xl">
+        <button type="button" id="btnConsulta" onclick="CheckSaldo()" class="bg-amber-400 font-bold rounded-3xl inline-flex py-2 px-8 m-3   ">Consultar Saldo</button>
+        <div id="saldoOut" class="absolute right-6 top-5">Saldo Disponible: $0</div>
       </div>
 
     </div>

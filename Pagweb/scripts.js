@@ -1,11 +1,12 @@
-const btnlogspam = 0
 const btnLogIn = document.getElementById("btnLogIn");
+const btnPagarcred = document.getElementById("btnPagar");
+const btnPagarDeb = document.getElementById("btnPagarDeb");
+
 function nada(){}
 
 function ValidateLogIn() {
 
   btnLogIn.innerHTML = "verificando";
-  btnLogIn.style.backgroundColor = "#78350f"
   btnLogIn.onclick = nada;
   
   var name = document.getElementById("name").value;
@@ -98,6 +99,16 @@ function CheckSaldo() {
   .then(data => {
     // Process the response data
     console.table(data);
+    var saldo = document.getElementById("saldoOut");
+    var text = "";
+    for (let index = 0; index < data.length; index++) {
+      var acc = data[index].account;
+      var sal = data[index].saldo;
+      var tipo = data[index].tipo;
+      text = text+acc+"("+tipo+"): $"+sal+"<br>";
+    }
+    
+    saldo.innerHTML = text;
     // Mostrar tabla de saldos
   })
   .catch(error => {
@@ -139,11 +150,25 @@ function validateUserID(name, email, ID) {
     })
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
+
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+      //Log In succsesful
+      //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
       if (responseData.identificacion != 0) {
         console.log("Log In Realizado");
         btnLogIn.innerHTML = "Log out";
         btnLogIn.style.backgroundColor = "#fbbf24"
+        document.getElementById("btnHistory").style.display = "block";
+        document.getElementById("panelConsulta").style.display = "block";
         btnLogIn.onclick = nada;
+        document.getElementById("panelConsulta").style.display = 'block';
+        document.getElementById("name").disabled = true;
+        document.getElementById("email").disabled = true;
+        document.getElementById("ID").disabled = true;
+        document.getElementById("reason").disabled = true;
+        document.getElementById("sede").disabled = true;
+        document.getElementById("amount").disabled = true;
+
 
         // Call the Azure Function for adding cards
         fetch(addCardsUrl, {
@@ -197,6 +222,7 @@ function validateUserID(name, email, ID) {
           })
           .catch(error => {
             console.error('An error occurred while calling httpAddCards Azure Function:', error);
+            errorDiv.innerHTML = "Error al iniciar session <br> Intente otra vez";
           });
             
           
@@ -207,6 +233,7 @@ function validateUserID(name, email, ID) {
         // ...
       } else {
         console.log("Log In Fallido, Usuario no existe");
+        errorDiv.innerHTML = "Error al iniciar session <br>Usuario no existe";
         btnLogIn.innerHTML = "Log in";
         btnLogIn.style.backgroundColor = "#fbbf24"
         btnLogIn.onclick = ValidateLogIn;
@@ -246,11 +273,12 @@ function ProcessPayment() {
   const identificacion = document.getElementById("ID").value;
   const hora = getCurrentTime();
   const fecha = getCurrentDate();
-  const metodo_pago = document.getElementById("tipoPago").value;
   var cuotas;
   var id;
+  
   if (metodo_pago == "Credito") {
-    cuotas = document.getElementById("cuota").value;
+    var cuota = document.getElementById("cuota");
+    var cuotas = cuota.options[cuota.selectedIndex].value;
     id = document.getElementById("dropdown").value;
 
   } else {
@@ -314,6 +342,13 @@ function ValidatePayment() {
   const metodo_pago = document.getElementById("tipoPago").value;
   var cuotas;
   var id;
+
+  //disable buttons to combat multiple sends
+  btnPagarcred.onclick = nada;
+  btnPagarDeb.onclick = nada;
+  btnPagarcred.innerHTML = "Procesando pago";
+  btnPagarDeb.innerHTML = "Procesando pago";
+
   if (metodo_pago == "Credito") {
     cuotas = document.getElementById("cuota").value;
     id = document.getElementById("dropdown").value;
@@ -377,6 +412,13 @@ function ValidatePayment() {
     .catch(error => {
       console.error('An error occurred:', error);
     });
+
+  //re enable butons
+  btnPagarcred.innerHTML = "Pagar";
+  btnPagarDeb.innerHTML = "Pagar";
+  btnPagarcred.onclick = ValidatePayment;
+  btnPagarDeb.onclick = ValidatePayment;
+  
 }
 
 function HistoryChannel() {
@@ -489,4 +531,6 @@ change.addEventListener('change', function cambioFormaPago(){
 
     }
 }, false);
+
+
 
