@@ -57,6 +57,43 @@ function ValidateLogIn() {
   }
 }
 
+function CheckSaldo() {
+  // Get the value from the input field with ID "ID"
+  const idValue = document.getElementById("ID").value;
+
+  // Create the JSON payload to send to the Azure Function
+  const payload = {
+    ID: idValue
+  };
+
+  // Make an HTTP POST request to the Azure Function
+  fetch('https://paymentapp.azurewebsites.net/api/HttpSaldo?code=EM7VGSj5vgA5ojnGspONrBFgJUP-PUd5fbh16sRf33t_AzFu7JyTJA==', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+  .then(response => {
+    if (response.ok) {
+      // Request succeeded, parse the response as JSON
+      return response.json();
+    } else {
+      // Request failed, handle the error
+      throw new Error('Error: ' + response.status);
+    }
+  })
+  .then(data => {
+    // Process the response data
+    console.table(data);
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the request
+    console.error('Error occurred:', error);
+  });
+}
+
+
 function validateUserID(name, email, ID) {
   // Create an object with the values
   const data = {
