@@ -312,7 +312,7 @@ function ValidatePayment() {
     .then(responseData => {
       if (responseData.length > 0) {
         // Handle the case when validation returns an ID
-        console.log("Validation successful. ID: " + responseData[0]);
+        console.log("Validation response: " + responseData[0]);
         ProcessPayment();
 
       } else {
