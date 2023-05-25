@@ -356,6 +356,41 @@ function ValidatePayment() {
     });
 }
 
+function HistoryChannel() {
+  // Values to send
+  const idValue = document.getElementById("ID").value;
+
+  // Create the JSON payload to send to the Azure Function
+  const payload = {
+    ID: idValue
+  };
+
+  // Azure Function URL
+  var url = 'https://paymentapp.azurewebsites.net/api/HttpHistory?code=zY0cl_1sxztFreH-65eXXiQDAbWlo7Ft1jNLb0WzRooPAzFuvxmjXg==';
+
+  // Sending data via Fetch API
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.json(); // Parse response as JSON
+    } else {
+      throw new Error('Error sending data:', response.statusText);
+    }
+  })
+  .then(responseData => {
+    console.log('Response received:', responseData); // Handle the response data
+  })
+  .catch(error => {
+    console.error('Error sending data:', error);
+  });
+}
+
 
 
 function getCurrentTime() {
