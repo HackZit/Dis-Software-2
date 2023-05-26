@@ -480,7 +480,7 @@ function HistoryChannel() {
     for (let index = 0; index < responseData.length; index++) {
 
       divbig.innerHTML = responseData[index].amount;
-      hist.appendChild(divaman);
+      hist.appendChild(divbig);
       
       divsmol.innerHTML = responseData[index].cuotas;
       hist.appendChild(divsmol);
@@ -519,7 +519,7 @@ function HistoryChannel() {
 }
 
 function volver(){
-  document.getElementById("panelDePago").style.display = "block";
+  document.getElementById("panelDePago").style.display = "grid";
   document.getElementById("panelBueno").style.display = "none";
   document.getElementById("panelFallo").style.display = "none";
   document.getElementById("panelhistorial").style.display = "none";
