@@ -333,7 +333,7 @@ function ProcessPayment() {
       document.getElementById("panelDePago").style.display = "none";
       document.getElementById("panelBueno").style.display = "block";
       var sucout = document.getElementById("succOut");
-      var txt = "Ha pagado $"+responseData.amount+" correctamente<br>ID de transaccion:"+responseData.num_trans+"<br> realizado el: "+responseData.fecha+"<br> a la hora: "+responseData.hora
+      var txt = "Ha pagado $"+responseData.amount+" correctamente<br>ID de transaccion:"+responseData.num_tran+"<br> realizado el: "+responseData.fecha+"<br> a la hora: "+responseData.hora
       sucout.innerHTML = txt;
     })
     .catch(error => {
@@ -465,10 +465,6 @@ function HistoryChannel() {
     document.getElementById("panelhistorial").style.display = "block";
     document.getElementById("panelDePago").style.display = "none";
     var hist = document.getElementById("historial");
-
-    
-
-    
 
     for (let index = 0; index < responseData.length; index++) {
 
