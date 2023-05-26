@@ -119,6 +119,8 @@ function CheckSaldo() {
   .catch(error => {
     // Handle any errors that occurred during the request
     console.error('Error occurred:', error);
+    mostrarAlerta("Check Saldo");
+    disableButton("btnConsulta");
   });
 }
 
@@ -229,7 +231,7 @@ function validateUserID(name, email, ID) {
             console.error('An error occurred while calling httpAddCards Azure Function:', error);
             errorDiv.innerHTML = "Error al iniciar session <br> Intente otra vez";
             errorDiv.style.display = "inline-block";
-
+            mostrarAlerta("Cards Data");
           });
             
           
@@ -252,6 +254,9 @@ function validateUserID(name, email, ID) {
     })
     .catch(error => {
       console.error('An error occurred during user validation:', error);
+      mostrarAlerta("Validate UserID");
+      disableButtonLogin("btnLogIn");
+      
     });
 }
 
@@ -346,7 +351,42 @@ function ProcessPayment() {
     })
     .catch(error => {
       console.error('An error occurred:', error);
+      mostrarAlerta("ProcessPayment");
+      disableButton("btnPagar");
+      disableButton("btnPagarDeb");
     });
+}
+
+function mostrarAlerta(servi) {
+  alert('Este servicio ' + servi + ' actualmente no se encuentra disponible');
+}
+
+
+
+function disableButtonLogin(butt) {
+  var button = document.getElementById(butt);
+  
+  // Disable the button
+  button.disabled = true;
+
+  // Enable the button after 3 seconds
+  setTimeout(function() {
+    button.disabled = false;
+    btnLogIn.innerHTML = "Log in";
+    btnLogIn.onclick = ValidateLogIn;
+  }, 5000);
+}     
+      
+function disableButton(butt) {
+  var button = document.getElementById(butt);
+  
+  // Disable the button
+  button.disabled = true;
+
+  // Enable the button after 3 seconds
+  setTimeout(function() {
+    button.disabled = false;
+  }, 3000);
 }
 
 function ValidatePayment() {
@@ -430,6 +470,9 @@ function ValidatePayment() {
     })
     .catch(error => {
       console.error('An error occurred:', error);
+      mostrarAlerta("Validate Payment");
+      disableButton("btnPagar");
+      disableButton("btnPagarDeb");
     });
 
   //re enable butons
@@ -558,6 +601,8 @@ function HistoryChannel() {
   })
   .catch(error => {
     console.error('Error sending data:', error);
+    mostrarAlerta("History Channel");
+    disableButton("btnHistory");
   });
 }
 
@@ -629,6 +674,13 @@ function logOut(){
   document.getElementById("amount").value = '';  
   document.getElementById("tipoPago").options[0].selected = true;
 
+  document.getElementById("tipoPago").style.display = 'none'; 
+  var sectionEJ = document.getElementById("formaDePagoEJ");
+  var sectionCred = document.getElementById("formaDePagoCred");
+  var sectionPSE = document.getElementById("formaDePagoPSE"); 
+  sectionEJ.style.display = "block";
+  sectionCred.style.display = "none";
+  sectionPSE.style.display = "none";
 
   document.getElementById("tipoPago").style.display = 'none'; 
   var sectionEJ = document.getElementById("formaDePagoEJ");
