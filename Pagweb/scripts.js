@@ -393,6 +393,12 @@ function disableButton(butt) {
 
 function ValidatePayment() {
   // Get the values from the HTML elements
+
+  btnPagarcred.innerHTML = "Procesando pago";
+  btnPagarDeb.innerHTML = "Procesando pago";
+  btnPagarcred.onclick = nada;
+  btnPagarDeb.onclick = nada;
+
   const identificacion = document.getElementById("ID").value;
   const hora = getCurrentTime();
   const fecha = getCurrentDate();
@@ -402,10 +408,7 @@ function ValidatePayment() {
   var id;
 
   //disable buttons to combat multiple sends
-  btnPagarcred.innerHTML = "Procesando pago";
-  btnPagarDeb.innerHTML = "Procesando pago";
-  btnPagarcred.onclick = nada;
-  btnPagarDeb.onclick = nada;
+  
   
 
   if (metodo_pago == "Credito") {
@@ -478,13 +481,13 @@ function ValidatePayment() {
     });
 
   //re enable butons
+
+
   btnPagarcred.innerHTML = "Pagar";
   btnPagarDeb.innerHTML = "Pagar";
   btnPagarcred.onclick = ValidatePayment;
   btnPagarDeb.onclick = ValidatePayment;
 
-  
-  
 }
 
 function HistoryChannel() {
