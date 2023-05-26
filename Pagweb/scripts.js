@@ -477,6 +477,7 @@ function ValidatePayment() {
       // Handle the response data as needed
       if (Object.keys(responseData).length === 1) {
         console.log("Empezando a procesar pago: ", responseData);
+        buttOn();
         ProcessPayment();
       } else {
         console.log("Pago rechazado: ", responseData);
@@ -493,7 +494,6 @@ function ValidatePayment() {
     });
 
   //re enable butons
-  buttOn();
 }
 
 function HistoryChannel() {
@@ -531,6 +531,8 @@ function HistoryChannel() {
   
   .then(responseData => {
     console.log('Response received:', responseData); // Handle the response data
+    btnhist.innerHTML = "Facturas";
+    btnhist.onclick = HistoryChannel;
     // Mover a pestaña de historial
     document.getElementById("panelhistorial").style.display = "block";
     document.getElementById("panelDePago").style.display = "none";
@@ -614,6 +616,7 @@ function HistoryChannel() {
       hist.appendChild(divSed);
     }
     histop = index;
+    
   })
   .catch(error => {
     console.error('Error sending data:', error);
@@ -621,8 +624,7 @@ function HistoryChannel() {
     disableButton("btnHistory");
   });
 
-  btnhist.innerHTML = "Facturasl";
-  btnhist.onclick = HistoryChannel;
+  
 }
 
 var histop = 0;
