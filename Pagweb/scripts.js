@@ -251,6 +251,8 @@ function validateUserID(name, email, ID) {
       console.error('An error occurred during user validation:', error);
       mostrarAlerta("Validate UserID");
       disableButton("btnLogIn");
+      btnLogIn.innerHTML = "Log in";
+      btnLogIn.onclick = ValidateLogIn;
     });
 }
 
@@ -352,7 +354,7 @@ function ProcessPayment() {
 }
 
 function mostrarAlerta(servi) {
-  alert('Este servicio ',servi, ' actualmente no se encuentra disponible');
+  alert('Este servicio ' + servi + ' actualmente no se encuentra disponible');
 }
 
 function disableButton(butt) {
