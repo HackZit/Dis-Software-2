@@ -21,7 +21,7 @@
     <!--todo el panel-->
     <h1 class=" font-bold text-4xl absolute pt-16 text-center z-20 w-screen ">Sistema de pago en linea</h1>
     <div class=" h-12"></div>
-    <div id="panelDePago" class=" bg-blue-500 rounded-3xl w-2/3 bg-opacity-80 mx-auto border-white border-2 grid grid-cols-2 grid-rows-1 pt-20 -z-10 ">
+    <div id="panelDePago" class="bg-blue-500 rounded-3xl w-2/3 bg-opacity-80 mx-auto border-white border-2 grid grid-cols-2 grid-rows-1 pt-20 -z-10 ">
       
       <!--lado izquierdo-->
       <div class="p-8 inline-block text-center">
@@ -143,9 +143,7 @@
       <!--lado bajo (consultar) -->
       <div id="panelConsulta" class="hidden relative bg-blue-200 bg-opacity-80 col-span-2  h-auto mx-12 mb-4 -mt-4 rounded-3xl">
         <button type="button" id="btnConsulta" onclick="CheckSaldo()" class="bg-amber-400 font-bold rounded-3xl inline-flex py-2 px-8 m-3   ">Consultar Saldo</button>
-        <div id="saldoOut" class="inline-flex text-center ml-20 mb-4">Saldo Disponible: $0 <br> 
-
-        </div>
+        <div id="saldoOut" class="inline-flex text-center ml-20 mb-4"></div>
       </div>
 
     </div>
@@ -172,13 +170,14 @@
     <!--panel de historial-->
     <div id="panelhistorial" class="hidden bg-blue-500 rounded-3xl w-4/5 bg-opacity-80 mx-auto border-white border-2 pt-20 -z-10 ">
       <div class="font-extrabold text-center block text-white text-2xl"> Resumen de transacciones </div>
-      <div id="historial" class="bg-blue-100 bg-opacity-80 h-full m-6 rounded-3xl grid grid-cols-10 gap-2 grid-rows-[24px] text-center p-2">
+      <div id="historial" class="bg-blue-100 bg-opacity-80 h-full m-6 rounded-3xl grid grid-cols-11 gap-2 grid-rows-[24px] text-center p-2">
         <div class="h-6 bg-blue-300 rounded-3xl col-span-2">Cantidad</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Cuotas</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Fecha</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Hora</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">ID</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Metodo</div>
+        <div class="h-6 bg-blue-300 rounded-3xl ">Estado</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Transaccion</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Razon</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Sede</div>

@@ -162,7 +162,6 @@ function validateUserID(name, email, ID) {
 
         document.getElementById("btnHistory").style.display = "block";
         document.getElementById("panelConsulta").style.display = "block";
-        document.getElementById("panelConsulta").style.display = 'block';
         document.getElementById("name").disabled = true;
         document.getElementById("email").disabled = true;
         document.getElementById("ID").disabled = true;
@@ -512,6 +511,17 @@ function HistoryChannel() {
       divMet.innerHTML = responseData[index].metodo_pago;
       hist.appendChild(divMet);
 
+      var divEst = document.createElement("div");
+      divEst.style.height = "1.5rem";
+      divEst.style.backgroundColor = "#93c5fd";
+      divEst.style.borderRadius = "0.75rem";
+      if (responseData[index].estado) {
+        divEst.innerHTML = "Confirmado";
+      }else{
+        divEst.innerHTML = "Error";
+      }
+      hist.appendChild(divEst);
+
       var divTrans = document.createElement("div");
       divTrans.style.height = "1.5rem";
       divTrans.style.backgroundColor = "#93c5fd";
@@ -616,7 +626,6 @@ change.addEventListener('change', function cambioFormaPago(){
     var sectionEJ = document.getElementById("formaDePagoEJ");
     var sectionCred = document.getElementById("formaDePagoCred");
     var sectionPSE = document.getElementById("formaDePagoPSE");
-    var panelConsulta = document.getElementById("panelConsulta");
 
 
 
@@ -626,7 +635,6 @@ change.addEventListener('change', function cambioFormaPago(){
         sectionEJ.style.display = "none";
         sectionCred.style.display = "block";
         sectionPSE.style.display = "none";
-        panelConsulta.style.display = "block";
 
     }else if (seltext == "PSE"){
         //mostrar para PSE
@@ -634,7 +642,6 @@ change.addEventListener('change', function cambioFormaPago(){
         sectionEJ.style.display = "none";
         sectionCred.style.display = "none";
         sectionPSE.style.display = "block";
-        panelConsulta.style.display = "none";
 
     }else{
         //mostrar default
@@ -642,7 +649,6 @@ change.addEventListener('change', function cambioFormaPago(){
         sectionEJ.style.display = "block";
         sectionCred.style.display = "none";
         sectionPSE.style.display = "none";
-        panelConsulta.style.display = "none";
 
     }
 }, false);
