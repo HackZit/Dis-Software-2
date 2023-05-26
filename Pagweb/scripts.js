@@ -580,6 +580,33 @@ function addLeadingZero(number) {
   return number < 10 ? `0${number}` : number;
 }
 
+function logOut(){
+
+  console.log("Log Out Realizado");
+  btnLogIn.innerHTML = "Log in";
+  btnLogIn.style.backgroundColor = "#fbbf24"
+  btnLogIn.onclick = ValidateLogIn;
+
+  document.getElementById("btnHistory").style.display = "none";
+  document.getElementById("panelConsulta").style.display = "none";
+
+  document.getElementById("name").disabled = false;
+  document.getElementById("email").disabled = false;
+  document.getElementById("ID").disabled = false;
+  document.getElementById("reason").disabled = false;
+  document.getElementById("sede").disabled = false;
+  document.getElementById("amount").disabled = false;
+
+  document.getElementById("name").innerHTML = "";
+  document.getElementById("email").innerHTML = "";
+  document.getElementById("ID").innerHTML = "";
+  document.getElementById("reason").innerHTML = "";
+  document.getElementById("sede").innerHTML = "";
+  document.getElementById("amount").innerHTML = "";
+
+  document.getElementById("tipoPago").option[0].selected = true;
+
+}
 
 //cambio en forma de pago
 var change = document.getElementById("tipoPago");
