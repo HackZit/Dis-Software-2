@@ -2,6 +2,7 @@ const btnLogIn = document.getElementById("btnLogIn");
 const btnConsulta = document.getElementById("btnConsulta");
 const btnPagarcred = document.getElementById("btnPagar");
 const btnPagarDeb = document.getElementById("btnPagarDeb");
+const btnhist = document.getElementById("btnHistory");
 const errorDiv = document.getElementById('errorMessage');
 
 function nada(){}
@@ -391,14 +392,25 @@ function disableButton(butt) {
   }, 3000);
 }
 
-function ValidatePayment() {
-  // Get the values from the HTML elements
-
+function buttOff(){
+  console.log("Apagando botones")
   btnPagarcred.innerHTML = "Procesando pago";
   btnPagarDeb.innerHTML = "Procesando pago";
   btnPagarcred.onclick = nada;
   btnPagarDeb.onclick = nada;
+}
 
+function buttOn(){
+  console.log("Reactivando botones")
+  btnPagarcred.innerHTML = "Pagar";
+  btnPagarDeb.innerHTML = "Pagar";
+  btnPagarcred.onclick = ValidatePayment;
+  btnPagarDeb.onclick = ValidatePayment;
+}
+
+function ValidatePayment() {
+  // Get the values from the HTML elements
+  buttOff();
   const identificacion = document.getElementById("ID").value;
   const hora = getCurrentTime();
   const fecha = getCurrentDate();
@@ -481,16 +493,15 @@ function ValidatePayment() {
     });
 
   //re enable butons
-
-
-  btnPagarcred.innerHTML = "Pagar";
-  btnPagarDeb.innerHTML = "Pagar";
-  btnPagarcred.onclick = ValidatePayment;
-  btnPagarDeb.onclick = ValidatePayment;
-
+  buttOn();
 }
 
 function HistoryChannel() {
+
+  btnhist.innerHTML = "Generando historial";
+  btnhist.onclick = nada;
+
+
   // Values to send
   const idValue = document.getElementById("ID").value;
 
@@ -609,6 +620,9 @@ function HistoryChannel() {
     mostrarAlerta("History Channel");
     disableButton("btnHistory");
   });
+
+  btnhist.innerHTML = "Facturasl";
+  btnhist.onclick = HistoryChannel;
 }
 
 var histop = 0;
