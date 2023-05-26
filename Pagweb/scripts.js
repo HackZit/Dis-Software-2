@@ -1,6 +1,4 @@
 const btnLogIn = document.getElementById("btnLogIn");
-const btnPagarcred = document.getElementById("btnPagar");
-const btnPagarDeb = document.getElementById("btnPagarDeb");
 const errorDiv = document.getElementById('errorMessage');
 function nada(){}
 
@@ -73,6 +71,10 @@ function ValidateLogIn() {
 function CheckSaldo() {
   // Get the value from the input field with ID "ID"
   const idValue = document.getElementById("ID").value;
+  const btnConsulta = document.getElementById("btnConsulta");
+  btnConsulta = document.getElementById("btnConsulta");
+  btnConsulta.innerHTML = "consultando";
+  btnConsulta.onclick = nada;
 
   // Create the JSON payload to send to the Azure Function
   const payload = {
@@ -107,9 +109,12 @@ function CheckSaldo() {
       var tipo = data[index].tipo;
       text = text+acc+"("+tipo+"): $"+sal+"<br>";
     }
-
+    
     saldo.innerHTML = text;
     // Mostrar tabla de saldos
+
+    btnConsulta.innerHTML = "consultar";
+    btnConsulta.onclick = CheckSaldo;
   })
   .catch(error => {
     // Handle any errors that occurred during the request
@@ -350,6 +355,8 @@ function ValidatePayment() {
   const hora = getCurrentTime();
   const fecha = getCurrentDate();
   const metodo_pago = document.getElementById("tipoPago").value;
+  const btnPagarcred = document.getElementById("btnPagar");
+  const btnPagarDeb = document.getElementById("btnPagarDeb");
   var cuotas;
   var id;
 
@@ -621,6 +628,15 @@ function logOut(){
   document.getElementById("sede").value = '';  
   document.getElementById("amount").value = '';  
   document.getElementById("tipoPago").options[0].selected = true;
+
+
+  document.getElementById("tipoPago").style.display = 'none'; 
+  var sectionEJ = document.getElementById("formaDePagoEJ");
+  var sectionCred = document.getElementById("formaDePagoCred");
+  var sectionPSE = document.getElementById("formaDePagoPSE"); 
+  sectionEJ.style.display = "block";
+  sectionCred.style.display = "none";
+  sectionPSE.style.display = "none";
 
 
 }
