@@ -466,51 +466,75 @@ function HistoryChannel() {
     document.getElementById("panelDePago").style.display = "none";
     var hist = document.getElementById("historial");
 
-    var divbig = document.createElement("div");
-    divbig.style.height = "1.5rem";
-    divbig.style.backgroundColor = "#93c5fd";
-    divbig.style.borderRadius = "0.75rem";
-    divbig.style.gridColumn= "span 2 / span 2";
+    
 
-    var divsmol = document.createElement("div");
-    divsmol.style.height = "1.5rem";
-    divsmol.style.backgroundColor = "#93c5fd";
-    divsmol.style.borderRadius = "0.75rem";
+    
 
     for (let index = 0; index < responseData.length; index++) {
 
+      var divbig = document.createElement("div");
+      divbig.style.height = "1.5rem";
+      divbig.style.backgroundColor = "#93c5fd";
+      divbig.style.borderRadius = "0.75rem";
+      divbig.style.gridColumn= "span 2 / span 2";
       divbig.innerHTML = responseData[index].amount;
       hist.appendChild(divbig);
+
+      var divcuota = document.createElement("div");
+      divcuota.style.height = "1.5rem";
+      divcuota.style.backgroundColor = "#93c5fd";
+      divcuota.style.borderRadius = "0.75rem";
+      divcuota.innerHTML = responseData[index].cuotas;
+      hist.appendChild(divcuota);
       
-      divsmol.innerHTML = responseData[index].cuotas;
-      hist.appendChild(divsmol);
-      
-      divsmol.innerHTML = responseData[index].fecha;
-      hist.appendChild(divsmol);
+      var divfecha = document.createElement("div");
+      divfecha.style.height = "1.5rem";
+      divfecha.style.backgroundColor = "#93c5fd";
+      divfecha.style.borderRadius = "0.75rem";
+      divfecha.innerHTML = responseData[index].fecha;
+      hist.appendChild(divfecha);
 
-    
-      divsmol.innerHTML = responseData[index].hora;
-      hist.appendChild(divsmol);
+      var divhora = document.createElement("div");
+      divhora.style.height = "1.5rem";
+      divhora.style.backgroundColor = "#93c5fd";
+      divhora.style.borderRadius = "0.75rem";
+      divhora.innerHTML = responseData[index].hora;
+      hist.appendChild(divhora);
 
-     
-      divsmol.innerHTML = responseData[index].identificacion;
-      hist.appendChild(divsmol);
+      var divID = document.createElement("div");
+      divID.style.height = "1.5rem";
+      divID.style.backgroundColor = "#93c5fd";
+      divID.style.borderRadius = "0.75rem";
+      divID.innerHTML = responseData[index].identificacion;
+      hist.appendChild(divID);
 
-     
-      divsmol.innerHTML = responseData[index].metodo_pago;
-      hist.appendChild(divsmol);
+      var divMet = document.createElement("div");
+      divMet.style.height = "1.5rem";
+      divMet.style.backgroundColor = "#93c5fd";
+      divMet.style.borderRadius = "0.75rem";
+      divMet.innerHTML = responseData[index].metodo_pago;
+      hist.appendChild(divMet);
 
-      
-      divsmol.innerHTML = responseData[index].num_trans;
-      hist.appendChild(divsmol);
+      var divTrans = document.createElement("div");
+      divTrans.style.height = "1.5rem";
+      divTrans.style.backgroundColor = "#93c5fd";
+      divTrans.style.borderRadius = "0.75rem";
+      divTrans.innerHTML = responseData[index].num_trans;
+      hist.appendChild(divTrans);
 
-      
-      divsmol.innerHTML = responseData[index].razon;
-      hist.appendChild(divsmol);
+      var divRaz = document.createElement("div");
+      divRaz.style.height = "1.5rem";
+      divRaz.style.backgroundColor = "#93c5fd";
+      divRaz.style.borderRadius = "0.75rem";
+      divRaz.innerHTML = responseData[index].razon;
+      hist.appendChild(divRaz);
 
-      
-      divsmol.innerHTML = responseData[index].sede;
-      hist.appendChild(divsmol);
+      var divSed = document.createElement("div");
+      divSed.style.height = "1.5rem";
+      divSed.style.backgroundColor = "#93c5fd";
+      divSed.style.borderRadius = "0.75rem";
+      divSed.innerHTML = responseData[index].sede;
+      hist.appendChild(divSed);
     }
   })
   .catch(error => {
