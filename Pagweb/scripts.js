@@ -620,8 +620,8 @@ function logOut(){
   document.getElementById("reason").value = " ";
   document.getElementById("sede").value = " ";
   document.getElementById("amount").value = " ";
+  document.getElementById("tipoPago").options[0].selected = true;
 
-  document.getElementById("tipoPago").option[1].selected = true;
 
 }
 
