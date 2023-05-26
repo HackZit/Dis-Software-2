@@ -459,14 +459,15 @@ function HistoryChannel() {
       throw new Error('Error sending data:', response.statusText);
     }
   })
+  
   .then(responseData => {
     console.log('Response received:', responseData); // Handle the response data
     // Mover a pestaña de historial
     document.getElementById("panelhistorial").style.display = "block";
     document.getElementById("panelDePago").style.display = "none";
     var hist = document.getElementById("historial");
-
-    for (let index = 0; index < responseData.length; index++) {
+    var index = histop;
+    for (index; index < responseData.length; index++) {
 
       var divbig = document.createElement("div");
       divbig.style.height = "1.5rem";
@@ -543,11 +544,14 @@ function HistoryChannel() {
       divSed.innerHTML = responseData[index].sede;
       hist.appendChild(divSed);
     }
+    histop = index;
   })
   .catch(error => {
     console.error('Error sending data:', error);
   });
 }
+
+const histop = 0;
 
 function volver(){
   document.getElementById("panelDePago").style.display = "grid";
