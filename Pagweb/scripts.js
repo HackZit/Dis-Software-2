@@ -275,6 +275,8 @@ function ProcessPayment() {
   const fecha = getCurrentDate();
   var cuotas;
   var id;
+  var metodo_pago = document.getElementById("tipoPago").value;
+
   
   if (metodo_pago == "Credito") {
     var cuota = document.getElementById("cuota");
