@@ -114,6 +114,8 @@ function CheckSaldo() {
   .catch(error => {
     // Handle any errors that occurred during the request
     console.error('Error occurred:', error);
+    mostrarAlerta("Check Saldo");
+    disableButton("btnConsulta");
   });
 }
 
@@ -247,6 +249,8 @@ function validateUserID(name, email, ID) {
     })
     .catch(error => {
       console.error('An error occurred during user validation:', error);
+      mostrarAlerta("Validate UserID");
+      disableButton("btnLogIn");
     });
 }
 
@@ -341,7 +345,26 @@ function ProcessPayment() {
     })
     .catch(error => {
       console.error('An error occurred:', error);
+      mostrarAlerta("ProcessPayment");
+      disableButton("btnPagar");
+      disableButton("btnPagarDeb");
     });
+}
+
+function mostrarAlerta(servi) {
+  alert('Este servicio ',servi, ' actualmente no se encuentra disponible');
+}
+
+function disableButton(butt) {
+  var button = document.getElementById(butt);
+  
+  // Disable the button
+  button.disabled = true;
+
+  // Enable the button after 3 seconds
+  setTimeout(function() {
+    button.disabled = false;
+  }, 3000);
 }
 
 function ValidatePayment() {
@@ -423,6 +446,9 @@ function ValidatePayment() {
     })
     .catch(error => {
       console.error('An error occurred:', error);
+      mostrarAlerta("Validate Payment");
+      disableButton("btnPagar");
+      disableButton("btnPagarDeb");
     });
 
   //re enable butons
@@ -551,6 +577,8 @@ function HistoryChannel() {
   })
   .catch(error => {
     console.error('Error sending data:', error);
+    mostrarAlerta("History Channel");
+    disableButton("btnHistory");
   });
 }
 
