@@ -158,7 +158,7 @@ function validateUserID(name, email, ID) {
         console.log("Log In Realizado");
         btnLogIn.innerHTML = "Log out";
         btnLogIn.style.backgroundColor = "#fbbf24"
-        btnLogIn.onclick = nada;
+        btnLogIn.onclick = logOut;
 
         document.getElementById("btnHistory").style.display = "block";
         document.getElementById("panelConsulta").style.display = "block";
@@ -223,6 +223,8 @@ function validateUserID(name, email, ID) {
           .catch(error => {
             console.error('An error occurred while calling httpAddCards Azure Function:', error);
             errorDiv.innerHTML = "Error al iniciar session <br> Intente otra vez";
+            errorDiv.style.display = "inline-block";
+
           });
             
           
@@ -234,6 +236,7 @@ function validateUserID(name, email, ID) {
       } else {
         console.log("Log In Fallido, Usuario no existe");
         errorDiv.innerHTML = "Error al iniciar session <br>Usuario no existe";
+        errorDiv.style.display = "inline-block";
         btnLogIn.innerHTML = "Log in";
         btnLogIn.style.backgroundColor = "#fbbf24"
         btnLogIn.onclick = ValidateLogIn;
