@@ -158,9 +158,10 @@ function validateUserID(name, email, ID) {
         console.log("Log In Realizado");
         btnLogIn.innerHTML = "Log out";
         btnLogIn.style.backgroundColor = "#fbbf24"
+        btnLogIn.onclick = nada;
+
         document.getElementById("btnHistory").style.display = "block";
         document.getElementById("panelConsulta").style.display = "block";
-        btnLogIn.onclick = nada;
         document.getElementById("panelConsulta").style.display = 'block';
         document.getElementById("name").disabled = true;
         document.getElementById("email").disabled = true;
@@ -487,14 +488,14 @@ function HistoryChannel() {
       divfecha.style.height = "1.5rem";
       divfecha.style.backgroundColor = "#93c5fd";
       divfecha.style.borderRadius = "0.75rem";
-      divfecha.innerHTML = responseData[index].fecha;
+      divfecha.innerHTML = responseData[index].fecha.substring(0,10);
       hist.appendChild(divfecha);
 
       var divhora = document.createElement("div");
       divhora.style.height = "1.5rem";
       divhora.style.backgroundColor = "#93c5fd";
       divhora.style.borderRadius = "0.75rem";
-      divhora.innerHTML = responseData[index].hora;
+      divhora.innerHTML = responseData[index].hora.substring(11,16);
       hist.appendChild(divhora);
 
       var divID = document.createElement("div");
@@ -515,7 +516,7 @@ function HistoryChannel() {
       divTrans.style.height = "1.5rem";
       divTrans.style.backgroundColor = "#93c5fd";
       divTrans.style.borderRadius = "0.75rem";
-      divTrans.innerHTML = responseData[index].num_trans;
+      divTrans.innerHTML = responseData[index].num_tran;
       hist.appendChild(divTrans);
 
       var divRaz = document.createElement("div");
