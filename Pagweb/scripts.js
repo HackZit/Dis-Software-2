@@ -614,12 +614,12 @@ function logOut(){
   document.getElementById("sede").disabled = false;
   document.getElementById("amount").disabled = false;
 
-  document.getElementById("name").value = ' ';  
-  document.getElementById("email").value = ' ';  
-  document.getElementById("ID").value =  ' ';  
-  document.getElementById("reason").value =  ' ';  
-  document.getElementById("sede").value =  ' ';  
-  document.getElementById("amount").value =  ' ';  
+  document.getElementById("name").value ='';  
+  document.getElementById("email").value ='';  
+  document.getElementById("ID").value = '';  
+  document.getElementById("reason").value = '';  
+  document.getElementById("sede").value = '';  
+  document.getElementById("amount").value = '';  
   document.getElementById("tipoPago").options[0].selected = true;
 
 
