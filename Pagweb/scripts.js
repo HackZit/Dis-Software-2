@@ -76,7 +76,7 @@ function ValidateLogIn() {
 function CheckSaldo() {
   // Get the value from the input field with ID "ID"
   const idValue = document.getElementById("ID").value;
-  btnConsulta.innerHTML = "consultando";
+  btnConsulta.innerHTML = "Consultando";
   btnConsulta.onclick = nada;
 
   // Create the JSON payload to send to the Azure Function
@@ -477,8 +477,8 @@ function ValidatePayment() {
       // Handle the response data as needed
       if (Object.keys(responseData).length === 1) {
         console.log("Empezando a procesar pago: ", responseData);
-        buttOn();
         ProcessPayment();
+        buttOn();
       } else {
         console.log("Pago rechazado: ", responseData);
         // Mover a pestaña de rechazados
