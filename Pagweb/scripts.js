@@ -462,9 +462,54 @@ function HistoryChannel() {
     // Mover a pestaña de historial
     document.getElementById("panelhistorial").style.display = "block";
     document.getElementById("mainPanel").style.display = "none";
+    var hist = document.getElementById("historial");
 
-    var divaman = document.createElement("div");
+    var divbig = document.createElement("div");
+    divbig.style.height = "1.5rem";
+    divbig.style.backgroundColor = "#93c5fd";
+    divbig.style.borderRadius = "0.75rem";
+    divbig.style.gridColumn= "span 2 / span 2";
 
+    var divsmol = document.createElement("div");
+    divsmol.style.height = "1.5rem";
+    divsmol.style.backgroundColor = "#93c5fd";
+    divsmol.style.borderRadius = "0.75rem";
+
+    for (let index = 0; index < responseData.length; index++) {
+
+      divbig.innerHTML = responseData[index].amount;
+      hist.appendChild(divaman);
+      
+      divsmol.innerHTML = responseData[index].cuotas;
+      hist.appendChild(divsmol);
+      
+      divsmol.innerHTML = responseData[index].fecha;
+      hist.appendChild(divsmol);
+
+    
+      divsmol.innerHTML = responseData[index].hora;
+      hist.appendChild(divsmol);
+
+     
+      divsmol.innerHTML = responseData[index].identificacion;
+      hist.appendChild(divsmol);
+
+     
+      divsmol.innerHTML = responseData[index].metodo_pago;
+      hist.appendChild(divsmol);
+
+      
+      divsmol.innerHTML = responseData[index].num_trans;
+      hist.appendChild(divsmol);
+
+      
+      divsmol.innerHTML = responseData[index].razon;
+      hist.appendChild(divsmol);
+
+      
+      divsmol.innerHTML = responseData[index].sede;
+      hist.appendChild(divsmol);
+    }
   })
   .catch(error => {
     console.error('Error sending data:', error);

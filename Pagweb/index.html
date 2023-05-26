@@ -16,7 +16,7 @@
 <body>
   
   <div class="relative">
-    <img src="/assets/montana.jpg" alt="montana" class="absolute -z-20 w-screen h-screen">
+    <img src="/assets/montana.jpg" alt="montana" class="absolute -z-20 w-screen h-full min-h-screen">
     
     <!--todo el panel-->
     <h1 class=" font-bold text-4xl absolute pt-16 text-center z-20 w-screen ">Sistema de pago en linea</h1>
@@ -174,8 +174,8 @@
     <!--panel de historial-->
     <div id="panelhistorial" class="block bg-blue-500 rounded-3xl w-4/5 bg-opacity-80 mx-auto border-white border-2 pt-20 -z-10 ">
       <div class="font-extrabold text-center block text-white text-2xl"> Resumen de transacciones </div>
-      <div id="historial" class="bg-blue-100 bg-opacity-80 h-96 m-6 rounded-3xl grid grid-cols-9 gap-2 grid-rows-[24px] gridrow text-center p-2">
-        <div class="h-6 bg-blue-300 rounded-3xl ">Cantidad</div>
+      <div id="historial" class="bg-blue-100 bg-opacity-80 h-full m-6 rounded-3xl grid grid-cols-10 gap-2 grid-rows-[24px] text-center p-2">
+        <div class="h-6 bg-blue-300 rounded-3xl col-span-2">Cantidad</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Cuotas</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Fecha</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Hora</div>
@@ -185,7 +185,7 @@
         <div class="h-6 bg-blue-300 rounded-3xl ">Razon</div>
         <div class="h-6 bg-blue-300 rounded-3xl ">Sede</div>
 
-        <div class="bg-blue-300 rounded-xl ">123453</div>
+        <div class="bg-blue-300 rounded-xl col-span-2">200000000</div>
         <div class="bg-blue-300 rounded-xl ">1</div>
         <div class="bg-blue-300 rounded-xl ">13-1-65</div>
         <div class="bg-blue-300 rounded-xl ">12am</div>
