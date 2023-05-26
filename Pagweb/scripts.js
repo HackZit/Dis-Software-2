@@ -330,7 +330,7 @@ function ProcessPayment() {
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
       // Mover a pestaña de confirmación
-      document.getElementById("mainPanel").style.display = "none";
+      document.getElementById("panelDePago").style.display = "none";
       document.getElementById("panelBueno").style.display = "block";
       var sucout = document.getElementById("succOut");
       var txt = "Ha pagado $"+responseData.amount+" correctamente<br>ID de transaccion:"+responseData.num_trans+"<br> realizado el: "+responseData.fecha+"<br> a la hora: "+responseData.hora
@@ -414,7 +414,7 @@ function ValidatePayment() {
       } else {
         console.log("Pago rechazado: ", responseData);
         // Mover a pestaña de rechazados
-        document.getElementById("mainPanel").style.display = "none";
+        document.getElementById("panelDePago").style.display = "none";
         document.getElementById("panelFallo").style.display = "block";
       }
     })
@@ -463,7 +463,7 @@ function HistoryChannel() {
     console.log('Response received:', responseData); // Handle the response data
     // Mover a pestaña de historial
     document.getElementById("panelhistorial").style.display = "block";
-    document.getElementById("mainPanel").style.display = "none";
+    document.getElementById("panelDePago").style.display = "none";
     var hist = document.getElementById("historial");
 
     var divbig = document.createElement("div");
@@ -519,7 +519,7 @@ function HistoryChannel() {
 }
 
 function volver(){
-  document.getElementById("mainPanel").style.display = "block";
+  document.getElementById("panelDePago").style.display = "block";
   document.getElementById("panelBueno").style.display = "none";
   document.getElementById("panelFallo").style.display = "none";
   document.getElementById("panelhistorial").style.display = "none";
