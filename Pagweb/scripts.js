@@ -1,7 +1,7 @@
 const btnLogIn = document.getElementById("btnLogIn");
 const btnPagarcred = document.getElementById("btnPagar");
 const btnPagarDeb = document.getElementById("btnPagarDeb");
-
+const errorDiv = document.getElementById('errorMessage');
 function nada(){}
 
 function ValidateLogIn() {
@@ -49,7 +49,7 @@ function ValidateLogIn() {
   } else if (parseFloat(amount) <= 0) {
       errorMessage += "La cantidad debe ser mas que zero.<br>";
   }
-  var errorDiv = document.getElementById('errorMessage')
+  
   if (errorMessage !== "") {
     errorDiv.innerHTML = "Error <br>"+ errorMessage;
     errorDiv.style.display = "inline-block";
