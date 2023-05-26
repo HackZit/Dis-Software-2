@@ -250,9 +250,8 @@ function validateUserID(name, email, ID) {
     .catch(error => {
       console.error('An error occurred during user validation:', error);
       mostrarAlerta("Validate UserID");
-      disableButton("btnLogIn");
-      btnLogIn.innerHTML = "Log in";
-      btnLogIn.onclick = ValidateLogIn;
+      disableButtonLogin("btnLogIn");
+      
     });
 }
 
@@ -357,6 +356,23 @@ function mostrarAlerta(servi) {
   alert('Este servicio ' + servi + ' actualmente no se encuentra disponible');
 }
 
+
+
+function disableButtonLogin(butt) {
+  var button = document.getElementById(butt);
+  
+  // Disable the button
+  button.disabled = true;
+
+  // Enable the button after 3 seconds
+  setTimeout(function() {
+    button.disabled = false;
+  }, 3000);
+
+  btnLogIn.innerHTML = "Log in";
+  btnLogIn.onclick = ValidateLogIn;
+}     
+      
 function disableButton(butt) {
   var button = document.getElementById(butt);
   
