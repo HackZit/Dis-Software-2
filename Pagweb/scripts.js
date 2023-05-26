@@ -367,10 +367,9 @@ function disableButtonLogin(butt) {
   // Enable the button after 3 seconds
   setTimeout(function() {
     button.disabled = false;
-  }, 3000);
-
-  btnLogIn.innerHTML = "Log in";
-  btnLogIn.onclick = ValidateLogIn;
+    btnLogIn.innerHTML = "Log in";
+    btnLogIn.onclick = ValidateLogIn;
+  }, 10000);
 }     
       
 function disableButton(butt) {
