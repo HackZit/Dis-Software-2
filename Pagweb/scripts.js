@@ -261,6 +261,15 @@ function validateUserID(name, email, ID) {
       disableButtonLogin("btnLogIn");
       
     });
+
+    var dropdown = document.getElementById('dropdown');
+    var dropdowndeb = document.getElementById('dropdowndebito');
+    if (dropdown.length == 0) {
+      document.getElementById('btnPagar').onclick = nada;
+    }
+    if (dropdowndeb.length == 0) {
+      document.getElementById('btnPagarDeb').onclick = nada;
+    }
 }
 
 
@@ -681,6 +690,8 @@ function logOut(){
 
   document.getElementById("btnHistory").style.display = "none";
   document.getElementById("panelConsulta").style.display = "none";
+  document.getElementById('btnPagar').onclick = ValidatePayment;
+  document.getElementById('btnPagarDeb').onclick = ValidatePayment;
 
   document.getElementById("name").disabled = false;
   document.getElementById("email").disabled = false;
