@@ -1,6 +1,9 @@
 const btnLogIn = document.getElementById("btnLogIn");
+const btnConsulta = document.getElementById("btnConsulta");
+const btnPagarcred = document.getElementById("btnPagar");
+const btnPagarDeb = document.getElementById("btnPagarDeb");
 const errorDiv = document.getElementById('errorMessage');
-//alo?
+
 function nada(){}
 
 function ValidateLogIn() {
@@ -72,8 +75,6 @@ function ValidateLogIn() {
 function CheckSaldo() {
   // Get the value from the input field with ID "ID"
   const idValue = document.getElementById("ID").value;
-  const btnConsulta = document.getElementById("btnConsulta");
-  btnConsulta = document.getElementById("btnConsulta");
   btnConsulta.innerHTML = "consultando";
   btnConsulta.onclick = nada;
 
@@ -114,7 +115,7 @@ function CheckSaldo() {
     saldo.innerHTML = text;
     // Mostrar tabla de saldos
 
-    btnConsulta.innerHTML = "consultar";
+    btnConsulta.innerHTML = "Consultar Saldo";
     btnConsulta.onclick = CheckSaldo;
   })
   .catch(error => {
@@ -396,16 +397,16 @@ function ValidatePayment() {
   const hora = getCurrentTime();
   const fecha = getCurrentDate();
   const metodo_pago = document.getElementById("tipoPago").value;
-  const btnPagarcred = document.getElementById("btnPagar");
-  const btnPagarDeb = document.getElementById("btnPagarDeb");
+  
   var cuotas;
   var id;
 
   //disable buttons to combat multiple sends
-  btnPagarcred.onclick = nada;
-  btnPagarDeb.onclick = nada;
   btnPagarcred.innerHTML = "Procesando pago";
   btnPagarDeb.innerHTML = "Procesando pago";
+  btnPagarcred.onclick = nada;
+  btnPagarDeb.onclick = nada;
+  
 
   if (metodo_pago == "Credito") {
     cuotas = document.getElementById("cuota").value;
