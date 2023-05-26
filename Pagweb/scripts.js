@@ -226,7 +226,7 @@ function validateUserID(name, email, ID) {
             console.error('An error occurred while calling httpAddCards Azure Function:', error);
             errorDiv.innerHTML = "Error al iniciar session <br> Intente otra vez";
             errorDiv.style.display = "inline-block";
-
+            mostrarAlerta("Cards Data");
           });
             
           
