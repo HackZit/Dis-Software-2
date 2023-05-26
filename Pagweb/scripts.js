@@ -369,7 +369,7 @@ function disableButtonLogin(butt) {
     button.disabled = false;
     btnLogIn.innerHTML = "Log in";
     btnLogIn.onclick = ValidateLogIn;
-  }, 10000);
+  }, 5000);
 }     
       
 function disableButton(butt) {
@@ -667,6 +667,16 @@ function logOut(){
   document.getElementById("amount").value = '';  
   document.getElementById("tipoPago").options[0].selected = true;
 
+  var selected = document.getElementById("tipoPago")
+  var seltext = selected.options[selected.selectedIndex].text;
+  var sectionEJ = document.getElementById("formaDePagoEJ");
+  var sectionCred = document.getElementById("formaDePagoCred");
+  var sectionPSE = document.getElementById("formaDePagoPSE");
+  
+  console.log("entro a default")
+  sectionEJ.style.display = "block";
+  sectionCred.style.display = "none";
+  sectionPSE.style.display = "none";
 
 }
 
