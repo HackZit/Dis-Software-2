@@ -551,7 +551,7 @@ function HistoryChannel() {
   });
 }
 
-const histop = 0;
+var histop = 0;
 
 function volver(){
   document.getElementById("panelDePago").style.display = "grid";
