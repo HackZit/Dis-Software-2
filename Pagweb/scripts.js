@@ -1,5 +1,6 @@
 const btnLogIn = document.getElementById("btnLogIn");
 const errorDiv = document.getElementById('errorMessage');
+//alo?
 function nada(){}
 
 function ValidateLogIn() {
