@@ -667,13 +667,10 @@ function logOut(){
   document.getElementById("amount").value = '';  
   document.getElementById("tipoPago").options[0].selected = true;
 
-  var selected = document.getElementById("tipoPago")
-  var seltext = selected.options[selected.selectedIndex].text;
+  document.getElementById("tipoPago").style.display = 'none'; 
   var sectionEJ = document.getElementById("formaDePagoEJ");
   var sectionCred = document.getElementById("formaDePagoCred");
-  var sectionPSE = document.getElementById("formaDePagoPSE");
-  
-  console.log("entro a default")
+  var sectionPSE = document.getElementById("formaDePagoPSE"); 
   sectionEJ.style.display = "block";
   sectionCred.style.display = "none";
   sectionPSE.style.display = "none";
