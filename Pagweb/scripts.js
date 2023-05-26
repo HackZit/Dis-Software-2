@@ -348,6 +348,7 @@ function ProcessPayment() {
       // Mover a pestaña de confirmación
       document.getElementById("panelDePago").style.display = "none";
       document.getElementById("panelBueno").style.display = "block";
+      buttOn();
       var sucout = document.getElementById("succOut");
       var txt = "Ha pagado $"+responseData.amount+" correctamente<br>ID de transaccion:"+responseData.num_tran+"<br> realizado el: "+responseData.fecha+"<br> a la hora: "+responseData.hora
       sucout.innerHTML = txt;
@@ -358,6 +359,7 @@ function ProcessPayment() {
       disableButton("btnPagar");
       disableButton("btnPagarDeb");
     });
+    
 }
 
 function mostrarAlerta(servi) {
@@ -478,12 +480,13 @@ function ValidatePayment() {
       if (Object.keys(responseData).length === 1) {
         console.log("Empezando a procesar pago: ", responseData);
         ProcessPayment();
-        buttOn();
       } else {
         console.log("Pago rechazado: ", responseData);
         // Mover a pestaña de rechazados
         document.getElementById("panelDePago").style.display = "none";
         document.getElementById("panelFallo").style.display = "block";
+        buttOn();
+
       }
     })
     .catch(error => {
@@ -493,7 +496,6 @@ function ValidatePayment() {
       disableButton("btnPagarDeb");
     });
 
-  //re enable butons
 }
 
 function HistoryChannel() {
