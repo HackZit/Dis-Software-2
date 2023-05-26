@@ -215,6 +215,11 @@ function validateUserID(name, email, ID) {
               dropdown.appendChild(option);
             }
 
+            if (cardsData.Credito.data.length == 0) {
+              document.getElementById('btnPagar').style.display = "none";
+            }
+
+
             for (var i = 0; i < cardsData.Debito.data.length; i++) {
               // Crear una nueva opción
               var option = document.createElement('option');
@@ -226,7 +231,10 @@ function validateUserID(name, email, ID) {
               // Agregar la opción al dropdown
               dropdowndeb.appendChild(option);
             }
-
+            
+            if (cardsData.Debito.data.length == 0) {
+              document.getElementById('btnPagarDeb').style.display = "none";
+            }
 
             // Continue with any further logic or UI updates
           })
@@ -262,14 +270,8 @@ function validateUserID(name, email, ID) {
       
     });
 
-    var dropdown = document.getElementById('dropdown');
-    var dropdowndeb = document.getElementById('dropdowndebito');
-    if (dropdown.length == 0) {
-      document.getElementById('btnPagar').style.display = "none";
-    }
-    if (dropdowndeb.length == 0) {
-      document.getElementById('btnPagarDeb').style.display = "none";
-    }
+    
+    
 }
 
 
@@ -690,8 +692,8 @@ function logOut(){
 
   document.getElementById("btnHistory").style.display = "none";
   document.getElementById("panelConsulta").style.display = "none";
-  document.getElementById('btnPagar').style.display = "none";
-  document.getElementById('btnPagarDeb').style.display = "none";
+  document.getElementById('btnPagar').style.display = "block";
+  document.getElementById('btnPagarDeb').style.display = "block";
 
   document.getElementById("name").disabled = false;
   document.getElementById("email").disabled = false;
