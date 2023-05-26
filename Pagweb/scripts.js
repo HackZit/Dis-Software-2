@@ -107,7 +107,7 @@ function CheckSaldo() {
       var tipo = data[index].tipo;
       text = text+acc+"("+tipo+"): $"+sal+"<br>";
     }
-    
+
     saldo.innerHTML = text;
     // Mostrar tabla de saldos
   })
@@ -328,6 +328,11 @@ function ProcessPayment() {
     .then(responseData => {
       console.log('Response from Azure Function:', responseData);
       // Mover a pestaña de confirmación
+      document.getElementById("mainPanel").style.display = "none";
+      document.getElementById("panelBueno").style.display = "block";
+      var sucout = document.getElementById("succOut");
+      var txt = "Ha pagado $"+responseData.amount+" correctamente<br>ID de transaccion:"+responseData.num_trans+"<br> realizado el: "+responseData.fecha+"<br> a la hora: "+responseData.hora
+      sucout.innerHTML = txt;
     })
     .catch(error => {
       console.error('An error occurred:', error);
@@ -407,6 +412,8 @@ function ValidatePayment() {
       } else {
         console.log("Pago rechazado: ", responseData);
         // Mover a pestaña de rechazados
+        document.getElementById("mainPanel").style.display = "none";
+        document.getElementById("panelFallo").style.display = "block";
       }
     })
     .catch(error => {
@@ -418,6 +425,8 @@ function ValidatePayment() {
   btnPagarDeb.innerHTML = "Pagar";
   btnPagarcred.onclick = ValidatePayment;
   btnPagarDeb.onclick = ValidatePayment;
+
+  
   
 }
 
@@ -451,13 +460,24 @@ function HistoryChannel() {
   .then(responseData => {
     console.log('Response received:', responseData); // Handle the response data
     // Mover a pestaña de historial
+    document.getElementById("panelhistorial").style.display = "block";
+    document.getElementById("mainPanel").style.display = "none";
+
+    var divaman = document.createElement("div");
+
   })
   .catch(error => {
     console.error('Error sending data:', error);
   });
 }
 
+function volver(){
+  document.getElementById("mainPanel").style.display = "block";
+  document.getElementById("panelBueno").style.display = "none";
+  document.getElementById("panelFallo").style.display = "none";
+  document.getElementById("panelhistorial").style.display = "none";
 
+}
 
 function getCurrentTime() {
   const now = new Date();
