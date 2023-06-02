@@ -140,8 +140,8 @@ function validateUserID(name, email, ID) {
   const jsonData = JSON.stringify(data);
 
   // Set the Azure Function URLs
-  const loginUrl = 'https://paymentapp.azurewebsites.net/api/HttpLogin?code=98jgfag9g4Al6-VAC7RY0Y7V-gKmXfsfRf6t3p310PNwAzFulrIizg==';
-  const addCardsUrl = 'https://paymentapp.azurewebsites.net/api/httpAddCards?code=p6bc3jE_RX61BAWQoYM72Z0TyGl9Bz807OELj39rKwIMAzFuBjQbNw=='; 
+  const loginUrl = 'https://dis2api.azurewebsites.net/api/HttpLogin?code=MH9fCD_rXD8UF1oWyxsmwqLDR3pNcmV6o1LMOLzGaTS0AzFu3gfpaA==';
+  const addCardsUrl = 'https://dis2api.azurewebsites.net/api/HttpAddCards?code=-E6SE7RH2fR2jJrpiq-JKROdG6ecihJMtrhKVLRgsFeCAzFuUoHvjw=='; 
 
   // Send the JSON data to the Azure Function for user validation
   fetch(loginUrl, {
@@ -524,7 +524,7 @@ function HistoryChannel() {
   };
 
   // Azure Function URL
-  var url = 'https://paymentapp.azurewebsites.net/api/HttpHistory?code=zY0cl_1sxztFreH-65eXXiQDAbWlo7Ft1jNLb0WzRooPAzFuvxmjXg==';
+  var url = 'https://dis2api.azurewebsites.net/api/HttpHistory?code=1WcEWQHQAErylQu4If9LKF3fgOjB_q9QaVURhEYne-aBAzFupoa37w==';
 
   // Sending data via Fetch API
   fetch(url, {
